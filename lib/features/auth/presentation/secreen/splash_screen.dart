@@ -17,7 +17,10 @@ class _SplashScreenState extends State<SplashScreen> {
   }
   void navigateAfterThreeSeconds(){
     Future.delayed(const Duration(seconds: 3)).then((value) {
-      Navigator.pushNamed(context,Routes.onBoarding1Screen);
+      Navigator.pushNamedAndRemoveUntil(
+          context,
+          Routes.onBoarding1Screen,
+              (Route<dynamic> route) =>false);
     });
   }
   @override

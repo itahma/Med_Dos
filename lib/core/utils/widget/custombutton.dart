@@ -7,13 +7,13 @@ class CustomButton extends StatelessWidget {
     this.height=48,
      this.width=double.infinity,
     required this.onPressed,
-    required this.background,
+    this.background,
     required this.text,
   }) : super(key: key);
 final double ? height;
 final double ? width;
 final VoidCallback onPressed;
-final Color background;
+final Color? background;
 final String text ;
   @override
   Widget build(BuildContext context) {
