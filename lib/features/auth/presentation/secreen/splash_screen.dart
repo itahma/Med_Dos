@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:med_dos/core/routes/app_routes.dart';
 import 'package:med_dos/core/utils/app_colors.dart';
+import 'package:med_dos/core/utils/widget/app_string.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -29,7 +30,7 @@ class _SplashScreenState extends State<SplashScreen> {
     return Scaffold(
       backgroundColor: AppColors.primary,
       body: Center(
-        child: Text('MedDos',
+        child: Text(AppString.medDos,
         style: Theme.of(context).textTheme.displayLarge,
         ),
       ),

@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:med_dos/core/local/app_local.dart';
 import 'package:med_dos/core/routes/app_routes.dart';
 import 'package:med_dos/core/utils/app_assets.dart';
 import 'package:med_dos/core/utils/app_colors.dart';
+import 'package:med_dos/core/utils/widget/app_string.dart';
 import 'package:med_dos/core/utils/widget/customimage.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+
+import '../../../../app/app.dart';
 class BoardingModel{
   final String image;
   final String body;
@@ -12,6 +16,7 @@ class BoardingModel{
     required this.image,
 });
 }
+
 class OnBoarding1Screen extends StatefulWidget {
    const OnBoarding1Screen({Key? key}) : super(key: key);
 
@@ -24,21 +29,22 @@ class _OnBoarding1ScreenState extends State<OnBoarding1Screen> {
 
 List<BoardingModel>boarding=[
   BoardingModel(
+
     image: AppAssets.Onboarding1,
-    body: 'معنا ستكون على إطلاع دائم عن كل ما هو جديد في عالم الطب',
+    body: AppString.onBoarding1,
 
   ),
   BoardingModel(
     image: AppAssets.Onboarding2,
-    body: 'ستعيش معنا رحلة علاجية تأخذك لحياه افضل',
+    body:AppString.onBoarding2,
   ),
   BoardingModel(
     image: AppAssets.Onboarding3,
-    body: 'لا تقلق بشأن موعدك بإمكانك ان تقوم بإلغاء الموعد أو تأجيله بسهولة',
+    body: AppString.onBoarding3,
   ),
   BoardingModel(
     image: AppAssets.Onboarding4,
-    body: ' معك دائما',
+    body: AppString.onBoarding4,
   ),
 ];
 bool isLast=false ;
@@ -54,7 +60,7 @@ bool isLast=false ;
                   Routes.login,
                       (Route<dynamic> route) =>false);
             },
-              child: const Text('تخطي'),
+              child:  Text(AppString.skip.tr(context)),
           ),
         ],
       ),
@@ -78,7 +84,7 @@ bool isLast=false ;
                 },
                 controller: boardController,
                 itemBuilder: (context,index)=>
-                    buildBoardingItem(boarding[index]),
+                    buildBoardingItem(context,boarding[index]),
                 itemCount: boarding.length,
               ),
             ) ,
@@ -132,7 +138,7 @@ bool isLast=false ;
   }
 }
 
-Widget buildBoardingItem(BoardingModel model)=>Column(
+Widget buildBoardingItem(BuildContext context,BoardingModel model)=>Column(
    crossAxisAlignment: CrossAxisAlignment.start,
   mainAxisSize: MainAxisSize.min,
   children: [
@@ -142,7 +148,7 @@ Widget buildBoardingItem(BoardingModel model)=>Column(
       ),
     ),
      Text(
-      model.body
+      model.body.tr(context)
       ,style:const TextStyle(
       fontSize: 20,
       color: Colors.blue,
