@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:med_dos/core/local/app_local.dart';
 import 'package:med_dos/core/routes/app_routes.dart';
 import 'package:med_dos/core/utils/app_colors.dart';
 import 'package:med_dos/core/utils/widget/app_string.dart';
@@ -30,7 +31,7 @@ class _SplashScreenState extends State<SplashScreen> {
     return Scaffold(
       backgroundColor: AppColors.primary,
       body: Center(
-        child: Text(AppString.medDos,
+        child: Text(AppString.medDose.tr(context),
         style: Theme.of(context).textTheme.displayLarge,
         ),
       ),

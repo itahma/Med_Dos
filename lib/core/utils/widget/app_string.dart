@@ -3,12 +3,19 @@ import 'dart:core';
 
 class AppString {
 
-  static const String medDos='MedDos';
-  static const String skip='تخطي';
-  static const String onBoarding1='معنا ستكون على إطلاع دائم عن كل ما هو جديد في عالم الطب';
-  static const String onBoarding2='ستعيش معنا رحلة علاجية تأخذك لحياه افضل';
-  static const String onBoarding3='لا تقلق بشأن موعدك بإمكانك ان تقوم بإلغاء الموعد أو تأجيله بسهولة';
-  static const String onBoarding4='معك دائما';
+  static const String medDose='medDose';
+  static const String skip='skip';
+  static const String pageOne='you';
+  static const String pageTow='youWill';
+  static const String pageThree='do';
+  static const String pageFour='welcome';
+  static const String welcomeBack='welcomeBack';
+  static const String email = 'email';
+  static const String password = 'password';
+  static const String pleaseEnterValidPassword = 'please_enter_valid_password';
+  static const String forgetPassword = 'forgetPassword';
+  static const String signIn = 'sign_in';
+  static const String signUp = 'sign_up';
 
 
 

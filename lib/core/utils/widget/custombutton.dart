@@ -24,7 +24,7 @@ final String text ;
         onPressed: onPressed,
         style: Theme.of(context).elevatedButtonTheme.style!.copyWith(
           backgroundColor: MaterialStateProperty.all(
-            background ?? AppColors.white,
+            background ?? AppColors.primary,
           )
         ),
         child: Text(

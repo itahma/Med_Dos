@@ -37,6 +37,8 @@ dependencies:
   smooth_page_indicator:
   flutter_localizations:
     sdk: flutter
+  flutter_bloc:
+  get_it:
 
 
 
