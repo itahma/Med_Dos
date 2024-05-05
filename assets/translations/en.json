@@ -9,7 +9,8 @@
   "email": "Email",
   "password": "Password",
   "please_enter_valid_password": "Please Enter valid password",
-  "forgetPassword": "Forget Password",
+  "please_enter_valid_email": "Please Enter valid email",
+  "forgetPassword": "Forget Password ?",
   "sign_in": "Login",
   "sign_up": "Regsiter"
 }

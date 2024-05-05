@@ -10,6 +10,7 @@ class CustomTextFormField extends StatelessWidget {
      this.isPassword=false,
     this.icon,
     this.suffixIconOnPressed,
+    this.hitColors,
 
   }) : super(key: key);
 final TextEditingController controller;
@@ -19,6 +20,7 @@ final String? Function(String?)? validate;
 final bool isPassword;
 final IconData? icon;
 final VoidCallback?suffixIconOnPressed;
+  final Color? hitColors;
 
 
 
@@ -31,11 +33,15 @@ final VoidCallback?suffixIconOnPressed;
       validator: validate,
       decoration: InputDecoration(
           hintText: hint,
-          suffixStyle: TextStyle(color: AppColors.primary ),
+          hintStyle: TextStyle(color:hitColors),
+
         labelText: lable,
         suffixIcon: IconButton(
           onPressed: suffixIconOnPressed,
-          icon:Icon (icon),
+          icon:Icon (
+              icon,
+          color: AppColors.primary,
+          ),
         )
 
 

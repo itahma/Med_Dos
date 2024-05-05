@@ -13,6 +13,7 @@ class AppString {
   static const String email = 'email';
   static const String password = 'password';
   static const String pleaseEnterValidPassword = 'please_enter_valid_password';
+  static const String pleaseEnterValidEmail = 'please_enter_valid_email';
   static const String forgetPassword = 'forgetPassword';
   static const String signIn = 'sign_in';
   static const String signUp = 'sign_up';
