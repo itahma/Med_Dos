@@ -8,4 +8,5 @@ class AppAssets {
   static const String pocking='${basePath}Character.png';
   static const String splash='${basePath}splash.png';
   static const String loginImage='${basePath}login.png';
+  static const String logoIm='${basePath}logo2.png';
 }

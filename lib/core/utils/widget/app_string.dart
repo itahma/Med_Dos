@@ -17,6 +17,8 @@ class AppString {
   static const String forgetPassword = 'forgetPassword';
   static const String signIn = 'sign_in';
   static const String signUp = 'sign_up';
+  static const String dont_have_account = 'dont_have_account';
+  static const String loginSuccessfully = 'loginSuccessfully';
 
 
 

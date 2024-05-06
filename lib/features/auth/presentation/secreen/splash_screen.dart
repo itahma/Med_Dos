@@ -2,8 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:med_dos/core/local/app_local.dart';
 import 'package:med_dos/core/routes/app_routes.dart';
+import 'package:med_dos/core/utils/app_assets.dart';
 import 'package:med_dos/core/utils/app_colors.dart';
 import 'package:med_dos/core/utils/widget/app_string.dart';
+import 'package:med_dos/core/utils/widget/customimage.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -30,11 +32,11 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.primary,
-      body: Center(
-        child: Text(AppString.medDose.tr(context),
-        style: Theme.of(context).textTheme.displayLarge,
+      body:Center(
+        child: CustomImage(
+          imagePath: AppAssets.logoIm,
         ),
-      ),
+      )
 
     );
   }

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:med_dos/core/local/app_local.dart';
 import 'package:med_dos/core/utils/app_assets.dart';
 import 'package:med_dos/core/utils/app_colors.dart';
+import 'package:med_dos/core/utils/commons.dart';
 import 'package:med_dos/core/utils/widget/app_string.dart';
 import 'package:med_dos/core/utils/widget/custom_text_form_field.dart';
 import 'package:med_dos/core/utils/widget/custombutton.dart';
@@ -21,17 +23,19 @@ class LoginScreen extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              Stack(
+               Stack(
                 alignment: AlignmentDirectional.center,
                 children: [
-                  const CustomImage(
+                 const CustomImage(
                     imagePath: AppAssets.loginImage,
                     w: double.infinity,
                   ),
-                  Center(
-                    child: Text(
-                      AppString.welcomeBack.tr(context),
-                      style: Theme.of(context).textTheme.displayLarge,
+                  SizedBox(
+
+                     width: 300.w,
+                     height: 300.h,
+                    child: const CustomImage(
+                      imagePath: AppAssets.logoIm,
                     ),
                   ),
                 ],
@@ -42,7 +46,19 @@ class LoginScreen extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(24),
                 child: BlocConsumer<LoginCubit, LoginState>(
-                  listener: (context, state) {},
+                  listener: (context, state) {
+                    if (state is LoginSucessState){
+                      showToast(
+                          message: AppString.loginSuccessfully.tr(context),
+                          state: ToastState.success);
+                    }
+                    if(state is LoginErrorState){
+                      showToast(
+                          message: state.message,
+                          state: ToastState.error);
+
+                    }
+                  },
                   builder: (context, state) {
                     return Form(
                       key: BlocProvider.of<LoginCubit>(context).loginKey,
@@ -57,12 +73,13 @@ class LoginScreen extends StatelessWidget {
                             validate: (data) {
                               if (data!.isEmpty ||
                                   !data.contains('@gmail.com')) {
-                                return AppString.pleaseEnterValidEmail.tr(context);
+                                return AppString.pleaseEnterValidEmail
+                                    .tr(context);
                               }
                               return null;
                             },
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 32,
                           ),
                           CustomTextFormField(
@@ -81,7 +98,8 @@ class LoginScreen extends StatelessWidget {
                             },
                             validate: (data) {
                               if (data!.length < 6 || data.isEmpty) {
-                                return AppString.pleaseEnterValidPassword.tr(context);
+                                return AppString.pleaseEnterValidPassword
+                                    .tr(context);
                               }
                               return null;
                             },
@@ -91,24 +109,48 @@ class LoginScreen extends StatelessWidget {
                           ),
                           Row(
                             children: [
-                              Text(
-                                AppString.forgetPassword.tr(context),
+                              TextButton(
+                                onPressed: () {},
+                                child: Text(
+                                  AppString.forgetPassword.tr(context),
+                                  style: const TextStyle(color: AppColors.black),
+                                ),
                               ),
                             ],
                           ),
                           SizedBox(
                             height: 32.h,
                           ),
-                          CustomButton(
+                        state is LoginLoadingState?SpinKitFadingCircle(color: AppColors.primary,):  CustomButton(
                             onPressed: () {
                               if (BlocProvider.of<LoginCubit>(context)
                                   .loginKey
                                   .currentState!
                                   .validate()) {
                                 print('Login');
+                                // BlocProvider.of<LoginCubit>(context).login();
                               }
                             },
                             text: AppString.signIn.tr(context),
+                          ),
+                          SizedBox(
+                            height: 24.h,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(AppString.dont_have_account.tr(context)),
+                              TextButton(
+                                onPressed: () {
+
+                                 // Navigator.pushNamed(context, Routes.Register)
+                                },
+                                child: Text(
+                                  AppString.signUp.tr(context),
+                                  style: const TextStyle(color: AppColors.black),
+                                ),
+                              ),
+                            ],
                           ),
                         ],
                       ),

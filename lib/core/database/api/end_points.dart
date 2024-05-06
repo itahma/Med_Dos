@@ -1,7 +1,8 @@
 class EndPoint {
   static const String baseUrl = 'https://food-api-omega.vercel.app/api/v1/';
   static const String medSignIn = 'chef/signin';
-  static const String chefChangePassword = 'chef/change-password';
+  static const String medSignUp = 'chef/signin';
+  static const String medChangePassword = 'chef/change-password';
   static const String chefDelete = 'chef/delete';
   static const String chefGet = 'chef/get-chef/';
   static const String sendCode = 'chef/send-code';

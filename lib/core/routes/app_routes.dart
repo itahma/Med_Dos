@@ -1,8 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:med_dos/core/utils/setting_screen.dart';
+import 'package:med_dos/features/auth/presentation/secreen/setting_screen.dart';
 import 'package:med_dos/features/auth/presentation/secreen/Onboarding1_splash.dart';
 import 'package:med_dos/features/auth/presentation/secreen/login_screen.dart';
+import 'package:med_dos/features/auth/presentation/secreen/register_screen.dart';
 import 'package:med_dos/features/auth/presentation/secreen/reset_password_screen.dart';
 import 'package:med_dos/features/auth/presentation/secreen/send_code_screen.dart';
 import 'package:med_dos/features/auth/presentation/secreen/splash_screen.dart';
@@ -23,9 +24,8 @@ class Routes{
  static const String setting='/setting';
  static const String changePassword='/changePassword';
  static const String onBoarding1Screen='/onBoarding1Screen';
- static const String onBoarding2Screen='/onBoarding2Screen';
- static const String onBoarding3Screen='/onBoarding3Screen';
- static const String onBoarding4Screen='/onBoarding4Screen';
+ static const String register='/register';
+
 
 }
 class AppRoutes{
@@ -37,6 +37,8 @@ class AppRoutes{
     return MaterialPageRoute(builder: (_)=> OnBoarding1Screen());
      case Routes.login:
     return MaterialPageRoute(builder: (_)=>const LoginScreen());
+   case Routes.register:
+    return MaterialPageRoute(builder: (_)=>const RegisterScreen());
    case Routes.sendCode:
     return MaterialPageRoute(builder: (_)=>const SendCodeScreen());
    case Routes.restPassword:

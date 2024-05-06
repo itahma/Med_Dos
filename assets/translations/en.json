@@ -12,5 +12,7 @@
   "please_enter_valid_email": "Please Enter valid email",
   "forgetPassword": "Forget Password ?",
   "sign_in": "Login",
-  "sign_up": "Regsiter"
+  "sign_up": "Register",
+  "dont_have_account": "Don t have an account?",
+  "loginSuccessfully": "Login Successfully"
 }
