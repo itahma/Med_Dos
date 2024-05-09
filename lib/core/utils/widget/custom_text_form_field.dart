@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:med_dos/core/utils/app_colors.dart';
 
 class CustomTextFormField extends StatelessWidget {
@@ -32,6 +33,7 @@ final VoidCallback?suffixIconOnPressed;
       obscureText: isPassword,
       validator: validate,
       decoration: InputDecoration(
+        contentPadding:EdgeInsets.symmetric(horizontal: 16.w) ,
           hintText: hint,
           hintStyle: TextStyle(color:hitColors),
 

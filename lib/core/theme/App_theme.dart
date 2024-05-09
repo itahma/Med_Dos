@@ -41,5 +41,14 @@ ThemeData getAppTheme(){
       fontSize: 16,
     ), 
   ),
+    textButtonTheme: TextButtonThemeData(
+      style: ButtonStyle(
+        foregroundColor:MaterialStateProperty.all(Colors.black54) ,
+        textStyle: MaterialStateProperty.all(boldStyle(
+          color: AppColors.grey,
+          fontSize: 10,
+        ),)
+      ),
+    ),
   );
 }

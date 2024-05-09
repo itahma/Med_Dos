@@ -14,5 +14,22 @@
   "sign_in": "تسجيل الدخول",
   "sign_up": "إنشاء حساب",
   "dont_have_account": "ليس لديك حساب ؟",
-  "loginSuccessfully": "تم تسجيل الدخول بنجاح"
+  "loginSuccessfully": "تم تسجيل الدخول بنجاح",
+  "loginFailed": "حدث خطأ حاول مرة أخري",
+  "checkMail": "راجع البريد الالكتروني",
+  "sendResetLink": "إرسال الكود",
+  "createYourNewPassword": "إنشاء كلمة مرور جديدة",
+  "passwordChangedSucessfully": "تم تغير كلمة السر",
+  "code": "الكود",
+  "help": "مساعدة",
+  "article": "المقالات",
+  "home": "الرئيسية",
+  "favorite": "المفضلة",
+  "profile": "حسابي",
+  "pleaseEnterValidCode": "من فضلك أدخل كود صحيح",
+  "newPassword": "كلمة المرور الجديدة",
+  "oldPassword": "كلمة المرور القديمة",
+  "confirmPassword": "تأكيد كلمة المرور",
+  "confirm": "تأكيد",
+  "sendResetLinkInfo": "أدخل بريدك الالكتروني وسنرسل لك كود لاستعادة كلمة المرور"
 }

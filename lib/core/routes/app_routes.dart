@@ -7,6 +7,7 @@ import 'package:med_dos/features/auth/presentation/secreen/register_screen.dart'
 import 'package:med_dos/features/auth/presentation/secreen/reset_password_screen.dart';
 import 'package:med_dos/features/auth/presentation/secreen/send_code_screen.dart';
 import 'package:med_dos/features/auth/presentation/secreen/splash_screen.dart';
+import 'package:med_dos/features/home/screen/home_screen.dart';
 import 'package:med_dos/features/profile/presentation/secreen/change_password_screen.dart';
 import 'package:med_dos/features/profile/presentation/secreen/update_profile_screen.dart';
 
@@ -15,7 +16,6 @@ import '../../features/profile/presentation/secreen/profile_home_screen.dart';
 class Routes{
 
  static const String intitlRoute ='/';
- static const String changeLan='/changeLan';
  static const String login='/login';
  static const String sendCode='/sendCode';
  static const String restPassword='/restPassword';
@@ -25,6 +25,7 @@ class Routes{
  static const String changePassword='/changePassword';
  static const String onBoarding1Screen='/onBoarding1Screen';
  static const String register='/register';
+ static const String home='/home';
 
 
 }
@@ -32,7 +33,7 @@ class AppRoutes{
  static Route? generateRoute(RouteSettings routeSettings){
   switch (routeSettings.name){
    case Routes.intitlRoute:
-    return MaterialPageRoute(builder: (_)=>const SplashScreen());
+    return MaterialPageRoute(builder: (_)=>const HomeScreen());
    case Routes.onBoarding1Screen:
     return MaterialPageRoute(builder: (_)=> OnBoarding1Screen());
      case Routes.login:
@@ -51,6 +52,9 @@ class AppRoutes{
     return MaterialPageRoute(builder: (_)=>const SettingScreen());
    case Routes.changePassword:
     return MaterialPageRoute(builder: (_)=>const ChangePasswordScreen());
+   case Routes.home:
+    return MaterialPageRoute(builder: (_)=>const HomeScreen());
+
    default:
     return MaterialPageRoute(builder: (_)=>const Scaffold(
      body: Center(child: Text('No Found Route'),),

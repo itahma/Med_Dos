@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:med_dos/core/local/app_local.dart';
+import 'package:med_dos/core/routes/app_routes.dart';
 import 'package:med_dos/core/utils/app_assets.dart';
 import 'package:med_dos/core/utils/app_colors.dart';
 import 'package:med_dos/core/utils/commons.dart';
@@ -10,8 +11,8 @@ import 'package:med_dos/core/utils/widget/app_string.dart';
 import 'package:med_dos/core/utils/widget/custom_text_form_field.dart';
 import 'package:med_dos/core/utils/widget/custombutton.dart';
 import 'package:med_dos/core/utils/widget/customimage.dart';
-import 'package:med_dos/features/auth/presentation/cubit/login/login_cubit.dart';
-import 'package:med_dos/features/auth/presentation/cubit/login/login_state.dart';
+import 'package:med_dos/features/auth/presentation/cubit/login/login_cubit/login_cubit.dart';
+import 'package:med_dos/features/auth/presentation/cubit/login/login_cubit/login_state.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -54,7 +55,7 @@ class LoginScreen extends StatelessWidget {
                     }
                     if(state is LoginErrorState){
                       showToast(
-                          message: state.message,
+                          message: AppString.loginFailed.tr(context),
                           state: ToastState.error);
 
                     }
@@ -110,10 +111,14 @@ class LoginScreen extends StatelessWidget {
                           Row(
                             children: [
                               TextButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  navigateReplacement(context: context, route: Routes.sendCode);
+                                },
                                 child: Text(
+
                                   AppString.forgetPassword.tr(context),
-                                  style: const TextStyle(color: AppColors.black),
+                                  style: TextStyle(fontSize: 16),
+
                                 ),
                               ),
                             ],
@@ -121,14 +126,15 @@ class LoginScreen extends StatelessWidget {
                           SizedBox(
                             height: 32.h,
                           ),
-                        state is LoginLoadingState?SpinKitFadingCircle(color: AppColors.primary,):  CustomButton(
+                        state is LoginLoadingState?SpinKitFadingCircle(color: AppColors.primary,):
+                        CustomButton(
                             onPressed: () {
                               if (BlocProvider.of<LoginCubit>(context)
                                   .loginKey
                                   .currentState!
                                   .validate()) {
                                 print('Login');
-                                // BlocProvider.of<LoginCubit>(context).login();
+                                 BlocProvider.of<LoginCubit>(context).login();
                               }
                             },
                             text: AppString.signIn.tr(context),
@@ -139,15 +145,24 @@ class LoginScreen extends StatelessWidget {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Text(AppString.dont_have_account.tr(context)),
+                              Text(AppString.dont_have_account.tr(context),
+                              style: const TextStyle(fontSize: 16),
+                              ),
                               TextButton(
                                 onPressed: () {
+                                  if (BlocProvider.of<LoginCubit>(context)
+                                      .loginKey
+                                      .currentState!
+                                      .validate()) {
+
+                                    BlocProvider.of<LoginCubit>(context).login();
+                                  }
 
                                  // Navigator.pushNamed(context, Routes.Register)
                                 },
                                 child: Text(
                                   AppString.signUp.tr(context),
-                                  style: const TextStyle(color: AppColors.black),
+                                  style: const TextStyle(fontSize: 16),
                                 ),
                               ),
                             ],

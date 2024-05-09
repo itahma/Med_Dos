@@ -14,5 +14,22 @@
   "sign_in": "Login",
   "sign_up": "Register",
   "dont_have_account": "Don t have an account?",
-  "loginSuccessfully": "Login Successfully"
+  "loginSuccessfully": "Login Successfully",
+  "sendResetLink": "Send Reset Link",
+  "createYourNewPassword": "Create Your New Password",
+  "code": "Code",
+  "pleaseEnterValidCode": "Please Enter Valid Code",
+  "newPassword": "New Password",
+  "oldPassword": "Old Password",
+  "confirmPassword": "Confirm Password",
+  "confirm": "Confirm",
+  "loginFailed": "Invalid Data",
+  "passwordChangedSucessfully": "Password Changed Sucessfully",
+  "checkMail": "Check Your Mail",
+  "help": "Help",
+  "article": "Article",
+  "home": "Home",
+  "favorite": "Favorite",
+  "profile": "Profile",
+  "sendResetLinkInfo": "Enter your email address below and we will send you a code via your mail to reset your password."
 }

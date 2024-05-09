@@ -1,9 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:med_dos/core/database/api/end_points.dart';
+import 'package:med_dos/core/database/cache/cache_helper.dart';
+import 'package:med_dos/core/service/service_locatro.dart';
 import 'package:med_dos/features/auth/data/models/login_model.dart';
 import 'package:med_dos/features/auth/data/repository/auth_repository.dart';
-
 import 'login_state.dart';
 
 class LoginCubit extends Cubit<LoginState> {
@@ -31,8 +33,9 @@ class LoginCubit extends Cubit<LoginState> {
         password: passwordController.text);
     result.fold(
       (l) => emit(LoginErrorState(l)),
-      (r) {
+      (r) async{
         loginModel=r;
+        await sl<CacheHelper>().saveData(key: ApiKeys.token, value:r.token);
         emit(LoginSucessState());
       },
     );
