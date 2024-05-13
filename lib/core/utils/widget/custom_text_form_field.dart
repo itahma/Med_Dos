@@ -12,6 +12,9 @@ class CustomTextFormField extends StatelessWidget {
     this.icon,
     this.suffixIconOnPressed,
     this.hitColors,
+    this.keyboardType,
+    this.readOnly=false,
+    this.onTap,
 
   }) : super(key: key);
 final TextEditingController controller;
@@ -22,12 +25,17 @@ final bool isPassword;
 final IconData? icon;
 final VoidCallback?suffixIconOnPressed;
   final Color? hitColors;
-
+  final TextInputType? keyboardType;
+  final bool readOnly;
+  final  Function()? onTap;
 
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      onTap:onTap ,
+      readOnly: readOnly,
+      keyboardType:keyboardType ,
       controller: controller,
       cursorColor: AppColors.primary,
       obscureText: isPassword,

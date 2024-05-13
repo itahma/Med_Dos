@@ -1,46 +1,49 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:med_dos/core/local/app_local.dart';
 import 'package:med_dos/core/routes/app_routes.dart';
-import 'package:med_dos/core/utils/app_assets.dart';
-import 'package:med_dos/core/utils/app_colors.dart';
 import 'package:med_dos/core/utils/commons.dart';
-import 'package:med_dos/core/utils/widget/app_string.dart';
 import 'package:med_dos/core/utils/widget/custom_text_form_field.dart';
-import 'package:med_dos/core/utils/widget/custombutton.dart';
 import 'package:med_dos/core/utils/widget/customimage.dart';
-import 'package:med_dos/features/auth/presentation/cubit/forget_password_cubit/forget_password_cubit.dart';
-import '../cubit/forget_password_cubit/forget_password_state.dart';
+import 'package:med_dos/features/auth/presentation/cubit/register_send_code/redister_send_code_cubit.dart';
+import 'package:med_dos/features/auth/presentation/cubit/register_send_code/redister_send_code_state.dart';
+import 'package:med_dos/features/auth/presentation/cubit/registr_cubit/register_cubit.dart';
 
-class SendCodeScreen extends StatelessWidget {
-  const SendCodeScreen({Key? key}) : super(key: key);
+import '../../../../core/utils/app_assets.dart';
+import '../../../../core/utils/app_colors.dart';
+import '../../../../core/utils/widget/app_string.dart';
+import '../../../../core/utils/widget/custombutton.dart';
+
+class RegisterSendCode extends StatelessWidget {
+  const RegisterSendCode({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return  Scaffold(
       appBar: AppBar(
         leading: IconButton(icon: const Icon(Icons.arrow_back_ios),onPressed: (){
-          navigateReplacement(context: context, route: Routes.login);
+          navigateReplacement(context: context, route: Routes.register);
         }),
         elevation: 0.0,
-        title: Text(AppString.forgetPassword.tr(context)),
+        title: Text(AppString.sendResetLink.tr(context)),
       ),
       body: SafeArea(
 
         child: SingleChildScrollView(
-          child: BlocConsumer<ForgetPasswordCubit, ForgetPasswordState>(
+          child: BlocConsumer<RegisterSendCodeCubit, RegisterSendCodeState>(
             listener: (context, state) {
-              if(state is SendCodeSuccess){
+              if(state is RegisterSendCodeSuccess){
                 showToast(message: AppString.checkMail.tr(context), state: ToastState.success);
-                navigateReplacement(context: context, route: Routes.restPassword);
+                navigateReplacement(context: context, route: Routes.home);
               }
 
             },
             builder: (context, state) {
               return Form(
-                key: BlocProvider.of<ForgetPasswordCubit>(context).sendCodeKey,
+                key: BlocProvider.of<RegisterSendCodeCubit>(context).sendCodeKeyRegister,
                 child: Column(
                   children: [
                     Stack(
@@ -61,28 +64,24 @@ class SendCodeScreen extends StatelessWidget {
                       ],
                     ),
                     Padding(
-                      padding: const EdgeInsets.all(10),
-                      child: Text(AppString.sendResetLinkInfo.tr(context),
-                        style: Theme
-                            .of(context)
-                            .textTheme
-                            .bodyLarge,),
-                    ),
-                    Padding(
                       padding: const EdgeInsets.all(24),
                       child: Column(children: [
 
                         CustomTextFormField(
-                          controller: BlocProvider.of<ForgetPasswordCubit>(context)
-                              .emailController,
-                          icon: Icons.email,
-                          hint: AppString.email.tr(context),
+                          controller: BlocProvider.of<RegisterSendCodeCubit>(context)
+                              .registerCodeController,
+                          hint: AppString.code.tr(context),
+                          icon: Icons.code,
                           validate: (data) {
-                            if (data!.isEmpty ||
-                                !data.contains('@gmail.com')) {
-                              return AppString.pleaseEnterValidEmail
+                            if(num.tryParse(data!)== null){
+                              return AppString.pleaseEnterValidCode.tr(context);
+                            }
+
+                            if (data.isEmpty ) {
+                              return AppString.pleaseEnterValidCode
                                   .tr(context);
                             }
+
                             return null;
                           },
                         ),
@@ -90,16 +89,16 @@ class SendCodeScreen extends StatelessWidget {
                     ),
                     Padding(
                       padding: const EdgeInsets.all(24),
-                      child:state is SendCodeLoading ?const SpinKitFadingCircle(color: AppColors.primary,): CustomButton(
+                      child:state is RegisterSendCodeLoading ?const SpinKitFadingCircle(color: AppColors.primary,): CustomButton(
                         onPressed: () {
-                          if (BlocProvider.of<ForgetPasswordCubit>(context)
-                              .sendCodeKey
+                          if (BlocProvider.of<RegisterSendCodeCubit>(context)
+                              .sendCodeKeyRegister
                               .currentState!
                               .validate()) {
-                             BlocProvider.of<ForgetPasswordCubit>(context).sendCode();
+                            BlocProvider.of<RegisterCubit>(context).register();
                           }
                         },
-                        text: AppString.sendResetLink.tr(context),
+                        text: AppString.confirm.tr(context),
                       ),
                     ),
 

@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:med_dos/features/auth/presentation/secreen/register_send_code.dart';
 import 'package:med_dos/features/auth/presentation/secreen/setting_screen.dart';
 import 'package:med_dos/features/auth/presentation/secreen/Onboarding1_splash.dart';
 import 'package:med_dos/features/auth/presentation/secreen/login_screen.dart';
@@ -26,6 +27,7 @@ class Routes{
  static const String onBoarding1Screen='/onBoarding1Screen';
  static const String register='/register';
  static const String home='/home';
+ static const String registerCode='/register_send_code';
 
 
 }
@@ -33,7 +35,7 @@ class AppRoutes{
  static Route? generateRoute(RouteSettings routeSettings){
   switch (routeSettings.name){
    case Routes.intitlRoute:
-    return MaterialPageRoute(builder: (_)=>const SplashScreen());
+    return MaterialPageRoute(builder: (_)=>const OnBoarding1Screen());
    case Routes.onBoarding1Screen:
     return MaterialPageRoute(builder: (_)=> OnBoarding1Screen());
      case Routes.login:
@@ -54,6 +56,8 @@ class AppRoutes{
     return MaterialPageRoute(builder: (_)=>const ChangePasswordScreen());
    case Routes.home:
     return MaterialPageRoute(builder: (_)=>const HomeScreen());
+   case Routes.registerCode:
+    return MaterialPageRoute(builder: (_)=>const RegisterSendCode());
 
    default:
     return MaterialPageRoute(builder: (_)=>const Scaffold(

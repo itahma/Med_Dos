@@ -13,7 +13,10 @@ class AppString {
   static const String email = 'email';
   static const String password = 'password';
   static const String pleaseEnterValidPassword = 'please_enter_valid_password';
+  static const String pleaseEnterValidDate = 'please_enter_valid_date';
   static const String pleaseEnterValidEmail = 'please_enter_valid_email';
+  static const String pleaseEnterValidName = 'please_enter_valid_name';
+  static const String pleaseEnterValidPhone = 'please_enter_valid_phone';
   static const String forgetPassword = 'forgetPassword';
   static const String signIn = 'sign_in';
   static const String signUp = 'sign_up';
@@ -22,6 +25,7 @@ class AppString {
   static const String passwordChangedSucessfully = 'passwordChangedSucessfully';
   static const String dont_have_account = 'dont_have_account';
   static const String loginSuccessfully = 'loginSuccessfully';
+  static const String registerSuccessfully = 'registerSuccessfully';
   static const String sendResetLink = 'sendResetLink';
   static const String sendResetLinkInfo = 'sendResetLinkInfo';
   static const String code = 'code';
@@ -29,12 +33,18 @@ class AppString {
   static const String newPassword = 'newPassword';
   static const String oldPassword = 'oldPassword';
   static const String confirmPassword = 'confirmPassword';
+  static const String dateOfBirth = 'dateOfBirth';
   static const String confirm ='confirm';
   static const String help ='help';
   static const String article ='article';
   static const String home ='home';
   static const String favorite ='favorite';
   static const String profile ='profile';
+  static const String female ='female';
+  static const String male ='male';
+  static const String phone ='phone';
+  static const String lastName ='lastName';
+  static const String firstName ='firstName';
   static const String createYourNewPassword = 'createYourNewPassword';
 
 

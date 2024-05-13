@@ -29,7 +29,11 @@ class EndPoint {
 }
 
 class ApiKeys {
+  static const String firstName='firstName';
+      static const String lastName='lastName';
+      static const  String phone='phone';
   static const String email = 'email';
+  static const String dataBirth = 'dataBirth';
   static const String password = 'password';
   static const String confirmPassword = 'confirmPassword';
   static const String code = 'code';

@@ -127,6 +127,7 @@ class ReSetPassword extends StatelessWidget {
                           controller: BlocProvider.of<ForgetPasswordCubit>(context)
                               .codeController,
                           hint: AppString.code.tr(context),
+                          icon: Icons.code,
                           validate: (data) {
                             if(num.tryParse(data!)== null){
                               return AppString.pleaseEnterValidCode.tr(context);

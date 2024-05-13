@@ -52,6 +52,7 @@ class LoginScreen extends StatelessWidget {
                       showToast(
                           message: AppString.loginSuccessfully.tr(context),
                           state: ToastState.success);
+                      navigateReplacement(context: context, route: Routes.home);
                     }
                     if(state is LoginErrorState){
                       showToast(
@@ -71,6 +72,7 @@ class LoginScreen extends StatelessWidget {
                             hint: AppLocalizations.of(context)!
                                 .translate(AppString.email),
                             hitColors: AppColors.grey,
+                            icon: Icons.email,
                             validate: (data) {
                               if (data!.isEmpty ||
                                   !data.contains('@gmail.com')) {
@@ -86,6 +88,7 @@ class LoginScreen extends StatelessWidget {
                           CustomTextFormField(
                             controller: BlocProvider.of<LoginCubit>(context)
                                 .passwordController,
+
                             hint: AppLocalizations.of(context)!
                                 .translate(AppString.password),
                             hitColors: AppColors.grey,
@@ -150,15 +153,7 @@ class LoginScreen extends StatelessWidget {
                               ),
                               TextButton(
                                 onPressed: () {
-                                  if (BlocProvider.of<LoginCubit>(context)
-                                      .loginKey
-                                      .currentState!
-                                      .validate()) {
-
-                                    BlocProvider.of<LoginCubit>(context).login();
-                                  }
-
-                                 // Navigator.pushNamed(context, Routes.Register)
+                                  navigateReplacement(context: context, route: Routes.register);
                                 },
                                 child: Text(
                                   AppString.signUp.tr(context),
