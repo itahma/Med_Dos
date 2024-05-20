@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:med_dos/features/auth/presentation/secreen/register_send_code.dart';
-import 'package:med_dos/features/auth/presentation/secreen/setting_screen.dart';
+import 'package:med_dos/features/profile/presentation/secreen/setting_screen.dart';
 import 'package:med_dos/features/auth/presentation/secreen/Onboarding1_splash.dart';
 import 'package:med_dos/features/auth/presentation/secreen/login_screen.dart';
 import 'package:med_dos/features/auth/presentation/secreen/register_screen.dart';
@@ -35,7 +35,7 @@ class AppRoutes{
  static Route? generateRoute(RouteSettings routeSettings){
   switch (routeSettings.name){
    case Routes.intitlRoute:
-    return MaterialPageRoute(builder: (_)=>const OnBoarding1Screen());
+    return MaterialPageRoute(builder: (_)=>const HomeScreen());
    case Routes.onBoarding1Screen:
     return MaterialPageRoute(builder: (_)=> OnBoarding1Screen());
      case Routes.login:
@@ -51,7 +51,7 @@ class AppRoutes{
    case Routes.updateProfile:
     return MaterialPageRoute(builder: (_)=>const UpdateProfile());
    case Routes.setting:
-    return MaterialPageRoute(builder: (_)=>const SettingScreen());
+    return MaterialPageRoute(builder: (_)=> SettingScreen());
    case Routes.changePassword:
     return MaterialPageRoute(builder: (_)=>const ChangePasswordScreen());
    case Routes.home:

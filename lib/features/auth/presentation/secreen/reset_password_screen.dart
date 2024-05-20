@@ -36,6 +36,12 @@ class ReSetPassword extends StatelessWidget {
                 showToast(message: AppString.passwordChangedSucessfully.tr(context), state: ToastState.success);
                 navigateReplacement(context: context, route: Routes.login);
               }
+              if(state is ResetPasswordSuccess){
+                showToast(
+                    message: AppString.loginFailed.tr(context),
+                    state: ToastState.error);
+
+              }
 
             },
             builder: (context, state) {

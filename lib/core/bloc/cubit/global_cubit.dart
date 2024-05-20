@@ -11,9 +11,6 @@ String langCode='en';
 
   void changeLang(String codeLang)async{
     emit(ChangeLangLoading());
-      //isArabic=!isArabic;
-
-     //langCode =isArabic?'en':'ar';
      langCode=codeLang;
      await sl<CacheHelper>().cacheLanguage(codeLang);
     emit(ChangeLangSucess());

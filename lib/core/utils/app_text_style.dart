@@ -24,7 +24,7 @@ TextStyle boldStyle({
    double fontSize=24,
 
 })=>_textStyle(
-    color: Colors.white,
+    color: Colors.black,
     fontSize: 24,
     fontWeight: FontWeight.bold);
 //regular Style

@@ -21,9 +21,9 @@ class SendCodeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(icon: const Icon(Icons.arrow_back_ios),onPressed: (){
-          navigateReplacement(context: context, route: Routes.login);
-        }),
+        // leading: IconButton(icon: const Icon(Icons.arrow_back_ios),onPressed: (){
+        //   navigateReplacement(context: context, route: Routes.login);
+        // }),
         elevation: 0.0,
         title: Text(AppString.forgetPassword.tr(context)),
       ),

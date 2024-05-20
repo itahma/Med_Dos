@@ -22,10 +22,6 @@ class BoardingModel {
     required this.image,
   });
 }
-// class NavigationService {
-//   static GlobalKey<NavigatorState> navigatorKey =
-//   GlobalKey<NavigatorState>();
-// }
 class OnBoarding1Screen extends StatefulWidget {
   const OnBoarding1Screen({Key? key}) : super(key: key);
 
@@ -59,7 +55,6 @@ class _OnBoarding1ScreenState extends State<OnBoarding1Screen> {
 
 
   bool isLast = false;
-  bool isArabic =false;
 
   @override
   Widget build(BuildContext context) {

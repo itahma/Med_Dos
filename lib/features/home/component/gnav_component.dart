@@ -21,27 +21,27 @@ class GNavComponent extends StatelessWidget {
       items: [
 
         CurvedNavigationBarItem(
-          labelStyle: TextStyle(color: AppColors.primary),
+          labelStyle: const TextStyle(color: AppColors.primary),
           child: const Icon(Icons.help_outline),
           label:AppString.help.tr(context),
         ),
         CurvedNavigationBarItem(
-          labelStyle: TextStyle(color: AppColors.primary),
+          labelStyle: const TextStyle(color: AppColors.primary),
           child: const Icon(Icons.article_outlined, ),
           label: AppString.article.tr(context),
         ),
         CurvedNavigationBarItem(
-          labelStyle: TextStyle(color: AppColors.primary),
+          labelStyle: const TextStyle(color: AppColors.primary),
           child: const Icon(Icons.home_outlined),
           label: AppString.home.tr(context),
         ),
         CurvedNavigationBarItem(
-          labelStyle: TextStyle(color: AppColors.primary),
+          labelStyle: const TextStyle(color: AppColors.primary),
           child: const Icon(Icons.favorite_border),
           label: AppString.favorite.tr(context),
         ),
         CurvedNavigationBarItem(
-          labelStyle: TextStyle(color: AppColors.primary),
+          labelStyle: const TextStyle(color: AppColors.primary),
           child: const Icon(Icons.person_2_outlined),
           label: AppString.profile.tr(context),
         ),

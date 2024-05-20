@@ -39,6 +39,7 @@ class RegisterCubit extends Cubit<RegisterState> {
 
   RegisterModel?registerModel;
   TextEditingController codeController = TextEditingController();
+  TextEditingController groupValController = TextEditingController();
   void register() async {
     emit(RegisterLoadingState());
     final result = await authRepo.register(
@@ -50,7 +51,8 @@ class RegisterCubit extends Cubit<RegisterState> {
         confirmPassword: confirmPasswordController.text,
         date: datePickerController.text,
       code: codeController.text,
-    
+      groupVal: groupValController.text,
+
     );
     result.fold((l) => emit(RegisterErrorState(l)), (r) async{
       registerModel=r;

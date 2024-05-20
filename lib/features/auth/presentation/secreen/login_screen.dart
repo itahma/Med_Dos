@@ -14,8 +14,14 @@ import 'package:med_dos/core/utils/widget/customimage.dart';
 import 'package:med_dos/features/auth/presentation/cubit/login/login_cubit/login_cubit.dart';
 import 'package:med_dos/features/auth/presentation/cubit/login/login_cubit/login_state.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
+
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
@@ -115,7 +121,7 @@ class LoginScreen extends StatelessWidget {
                             children: [
                               TextButton(
                                 onPressed: () {
-                                  navigateReplacement(context: context, route: Routes.sendCode);
+                                  navigate(context: context, route: Routes.sendCode);
                                 },
                                 child: Text(
 

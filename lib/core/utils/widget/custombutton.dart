@@ -21,15 +21,17 @@ final String text ;
       height: height!.h,
       width: width!.w,
       child: ElevatedButton(
+
         onPressed: onPressed,
         style: Theme.of(context).elevatedButtonTheme.style!.copyWith(
           backgroundColor: MaterialStateProperty.all(
-            background ?? AppColors.primary,
+            background ?? AppColors.primary
+            ,
           )
         ),
         child: Text(
           text,
-          style:Theme.of(context).textTheme.displayLarge  ,
+          style:Theme.of(context).textTheme.displayMedium  ,
         ),
 
       ),

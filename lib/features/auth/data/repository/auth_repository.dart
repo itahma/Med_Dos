@@ -33,6 +33,7 @@ Future<Either<String,RegisterModel>>register({
   required String confirmPassword,
   required String date,
   required String code,
+  required String groupVal,
 
 })async{
   try{
@@ -46,6 +47,7 @@ Future<Either<String,RegisterModel>>register({
         ApiKeys.lastName:lastName,
         ApiKeys.phone:phone,
         ApiKeys.code:code,
+        ApiKeys.groupVal:groupVal,
 
 
       },

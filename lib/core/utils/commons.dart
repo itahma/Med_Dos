@@ -4,7 +4,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 
 import 'app_colors.dart';
 
-void navigate({
+void  navigate({
   required BuildContext context,
 required String route,
 dynamic arg,

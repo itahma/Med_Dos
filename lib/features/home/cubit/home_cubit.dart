@@ -13,16 +13,18 @@ import 'home_state.dart';
 class HomeCubit extends Cubit<HomeState> {
   HomeCubit() : super(HomeInitial());
   List<Widget> screens=[
-    const ProfileHome(),
-    const FavoriteScreen(),
-    const MenuHomeScreen(),
-    const ArticlesScreen(),
     const HelpScreen(),
+    const ArticlesScreen(),
+    const  MenuHomeScreen(),
+    const FavoriteScreen(),
+    const ProfileHome(),
+
 
   ];
-  int currentIndex=0;
-  void changeIndex(index){
+  int currentIndex=2;
+   changeIndex(index){
     currentIndex=index;
     emit(ChangeIndexstate());
   }
+
 }

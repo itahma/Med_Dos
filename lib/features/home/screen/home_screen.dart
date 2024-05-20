@@ -20,12 +20,13 @@ class HomeScreen extends StatelessWidget {
       builder: (context, state) {
         return Scaffold(
           appBar: AppBar(
-            leading: IconButton(onPressed: (){},icon: Icon(Icons.notifications)),
+            title: Text(AppString.medDose,style: Theme.of(context).textTheme.displayMedium,) ,
+            leading: IconButton(onPressed: (){},icon: const Icon(Icons.notifications)),
             elevation: 0,
 
           ),
           body:  BlocProvider.of<HomeCubit>(context).screens[ BlocProvider.of<HomeCubit>(context).currentIndex],
-          bottomNavigationBar:GNavComponent(),
+          bottomNavigationBar:const GNavComponent(),
         );
       },
     );

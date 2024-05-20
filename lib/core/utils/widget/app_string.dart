@@ -3,7 +3,7 @@ import 'dart:core';
 
 class AppString {
 
-  static const String medDose='medDose';
+  static const String medDose='MEDDOSE';
   static const String skip='skip';
   static const String pageOne='you';
   static const String pageTow='youWill';
@@ -45,8 +45,41 @@ class AppString {
   static const String phone ='phone';
   static const String lastName ='lastName';
   static const String firstName ='firstName';
+  static const String aboutApp ='aboutApp';
+  static const String contactUs ='contactUs';
+  static const String ifCan ='ifCan';
+  static const String settings ='settings';
+  static const String support ='support';
+  static const String logOut ='logOut';
+  static const String ar ='ar';
+  static const String en ='en';
+  static const String deleteAccount ='deleteAccount';
+  static const String passwordChanged ='passwordChanged';
+  static const String applicationLanguage ='applicationLanguage';
+  static const String medicalRecord = 'medicalRecord';
   static const String createYourNewPassword = 'createYourNewPassword';
+  static const String howDoYouFeel = 'howDoYouFeel';
+  static const String whatAreYouLookingFor = 'whatAreYouLookingFor';
 
+  static const String cardiology ='cardiology';
+  static const String dermatology ='dermatology';
+  static const String neurology ='neurology';
+  static const String pediatrics ='pediatrics';
+  static const String gynecology ='gynecology';
+  static const String ophthalmology ='ophthalmology';
+  static const String dentist ='dentist';
+  static const String otolaryngologist ='otolaryngologist';
+  static const String gastroenterologist ='gastroenterologist';
+  static const String generalSurgery ='generalSurgery';
+  static const String hematology ='hematology';
+  static const String orthopedics ='orthopedics';
+  static const String psychiatry ='psychiatry';
+  static const String nephrology ='nephrology';
+  static const String oncology ='oncology';
+  static const String pharmacies ='pharmacies';
+  static const String laboratories ='laboratories';
+  static const String radiologyCenters ='radiologyCenters';
+  static const String healthCenters ='healthCenters';
 
 
 
