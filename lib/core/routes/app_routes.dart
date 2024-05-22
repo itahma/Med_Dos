@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:med_dos/features/auth/presentation/secreen/register_send_code.dart';
+import 'package:med_dos/features/auth/presentation/secreen/splash_screen.dart';
 import 'package:med_dos/features/home_menu/docto_%20details/presentation/screen/doctor_details.dart';
 import 'package:med_dos/features/profile/presentation/secreen/setting_screen.dart';
 import 'package:med_dos/features/auth/presentation/secreen/Onboarding1_splash.dart';
@@ -38,7 +39,7 @@ class AppRoutes{
  static Route? generateRoute(RouteSettings routeSettings){
   switch (routeSettings.name){
    case Routes.intitlRoute:
-    return MaterialPageRoute(builder: (_)=>const HomeScreen());
+    return MaterialPageRoute(builder: (_)=>const SplashScreen());
    case Routes.onBoarding1Screen:
     return MaterialPageRoute(builder: (_)=> OnBoarding1Screen());
      case Routes.login:
