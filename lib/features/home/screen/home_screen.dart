@@ -9,7 +9,7 @@ import 'package:med_dos/features/home/component/gnav_component.dart';
 import 'package:med_dos/features/home/cubit/home_cubit.dart';
 import 'package:med_dos/features/home/cubit/home_state.dart';
 
-import '../../../core/utils/widget/app_string.dart';
+import '../../../core/utils/app_string.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);

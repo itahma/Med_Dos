@@ -1,17 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:med_dos/app/app.dart';
 import 'package:med_dos/core/local/app_local.dart';
 import 'package:med_dos/core/routes/app_routes.dart';
 import 'package:med_dos/core/utils/app_assets.dart';
 import 'package:med_dos/core/utils/app_colors.dart';
-import 'package:med_dos/core/utils/widget/app_string.dart';
-import 'package:med_dos/core/utils/widget/customimage.dart';
-import 'package:med_dos/features/auth/presentation/secreen/Onboarding1_splash.dart';
+import 'package:med_dos/core/widget/customimage.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-
 import '../../../../core/bloc/cubit/global_cubit.dart';
 import '../../../../core/bloc/cubit/global_state.dart';
+import '../../../../core/utils/app_string.dart';
 
 class BoardingModel {
   final String image;

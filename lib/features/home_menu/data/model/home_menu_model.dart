@@ -3,7 +3,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:med_dos/core/local/app_local.dart';
 import 'package:med_dos/core/utils/app_assets.dart';
-import 'package:med_dos/core/utils/widget/app_string.dart';
+
+import '../../../../core/utils/app_string.dart';
 
 class HomeSection{
    final String title ;

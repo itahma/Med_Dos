@@ -3,11 +3,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:med_dos/core/local/app_local.dart';
 import 'package:med_dos/core/utils/app_assets.dart';
 import 'package:med_dos/core/utils/app_colors.dart';
-import 'package:med_dos/core/utils/widget/app_string.dart';
-import 'package:med_dos/core/utils/widget/custom_text_form_field.dart';
-import 'package:med_dos/core/utils/widget/custombutton.dart';
-import 'package:med_dos/core/utils/widget/customimage.dart';
 import 'package:url_launcher/url_launcher.dart' as launcher;
+
+import '../../../core/utils/app_string.dart';
+import '../../../core/widget/custombutton.dart';
+import '../../../core/widget/customimage.dart';
 
 class HelpScreen extends StatelessWidget {
   const HelpScreen({Key? key}) : super(key: key);
@@ -41,7 +41,8 @@ class HelpScreen extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.all(10),
-              child: GestureDetector(
+              child: InkWell(
+
                 onTap: () async {
                   Uri uri = Uri.parse(
                     'mailto:info@rapidtech.dev?subject=Flutter Url launcher&body=Hi, Flutter developer',
@@ -79,7 +80,7 @@ class HelpScreen extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.all(10),
-              child: GestureDetector(
+              child: InkWell(
                 onTap: () async {
                   Uri uri = Uri.parse('tel:+963-962-694065');
                   if (!await launcher.launchUrl(uri)) {

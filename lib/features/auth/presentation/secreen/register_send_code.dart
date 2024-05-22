@@ -6,16 +6,16 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:med_dos/core/local/app_local.dart';
 import 'package:med_dos/core/routes/app_routes.dart';
 import 'package:med_dos/core/utils/commons.dart';
-import 'package:med_dos/core/utils/widget/custom_text_form_field.dart';
-import 'package:med_dos/core/utils/widget/customimage.dart';
 import 'package:med_dos/features/auth/presentation/cubit/register_send_code/redister_send_code_cubit.dart';
 import 'package:med_dos/features/auth/presentation/cubit/register_send_code/redister_send_code_state.dart';
 import 'package:med_dos/features/auth/presentation/cubit/registr_cubit/register_cubit.dart';
 
 import '../../../../core/utils/app_assets.dart';
 import '../../../../core/utils/app_colors.dart';
-import '../../../../core/utils/widget/app_string.dart';
-import '../../../../core/utils/widget/custombutton.dart';
+import '../../../../core/utils/app_string.dart';
+import '../../../../core/widget/custom_text_form_field.dart';
+import '../../../../core/widget/custombutton.dart';
+import '../../../../core/widget/customimage.dart';
 
 class RegisterSendCode extends StatelessWidget {
   const RegisterSendCode({Key? key}) : super(key: key);

@@ -4,12 +4,12 @@ import 'package:med_dos/core/local/app_local.dart';
 import 'package:med_dos/core/routes/app_routes.dart';
 import 'package:med_dos/core/utils/app_colors.dart';
 import 'package:med_dos/core/utils/commons.dart';
-import 'package:med_dos/core/utils/widget/app_string.dart';
+
 import 'package:med_dos/features/auth/presentation/cubit/login/login_cubit/login_cubit.dart';
 import 'package:med_dos/features/auth/presentation/cubit/registr_cubit/register_cubit.dart';
 import 'package:url_launcher/url_launcher.dart' as launcher;
 
-import '../../../../core/utils/widget/custombutton.dart';
+import '../../../../core/utils/app_string.dart';
 class ProfileHome extends StatelessWidget {
   const ProfileHome({Key? key}) : super(key: key);
 
@@ -66,9 +66,8 @@ class ProfileHome extends StatelessWidget {
               Divider(height: 50,thickness:1,color: Colors.blue.shade50),
               Padding(
                 padding: const EdgeInsets.all(10),
-                child: GestureDetector(
-                  onTap: () {
-                  },
+                child: InkWell(
+                  onTap: (){},
                   child: Container(
                     decoration: BoxDecoration(
                       color: const Color(0xff91BAEF).withOpacity(.2),
@@ -98,10 +97,8 @@ class ProfileHome extends StatelessWidget {
               ),
               Padding(
                 padding: const EdgeInsets.all(10),
-                child: GestureDetector(
-                  onTap: () {
-                    navigate(context: context, route: Routes.setting);
-                  },
+                child: InkWell(
+                  onTap: (){navigate(context: context, route: Routes.setting);},
                   child: Container(
                     decoration: BoxDecoration(
                       color: const Color(0xff91BAEF).withOpacity(.2),
@@ -131,7 +128,7 @@ class ProfileHome extends StatelessWidget {
               ),
               Padding(
                 padding: const EdgeInsets.all(10),
-                child: GestureDetector(
+                child: InkWell(
                   onTap: () async {
                     Uri uri = Uri.parse('tel:+963-962-694065');
                     if (!await launcher.launchUrl(uri)) {
@@ -169,9 +166,8 @@ class ProfileHome extends StatelessWidget {
               Divider(height: 50,thickness:1,color: Colors.blue.shade50),
               Padding(
                 padding: const EdgeInsets.all(10),
-                child: GestureDetector(
-                  onTap: () {
-                  },
+                child: InkWell(
+                  onTap: (){},
                   child: Container(
                     decoration: BoxDecoration(
                       border: Border.all(color: Colors.red),

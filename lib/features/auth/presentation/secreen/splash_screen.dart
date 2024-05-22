@@ -7,10 +7,9 @@ import 'package:med_dos/core/routes/app_routes.dart';
 import 'package:med_dos/core/utils/app_assets.dart';
 import 'package:med_dos/core/utils/app_colors.dart';
 import 'package:med_dos/core/utils/commons.dart';
-import 'package:med_dos/core/utils/widget/app_string.dart';
-import 'package:med_dos/core/utils/widget/customimage.dart';
 
 import '../../../../core/service/service_locatro.dart';
+import '../../../../core/widget/customimage.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);

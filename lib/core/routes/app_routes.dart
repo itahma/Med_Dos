@@ -1,17 +1,18 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:med_dos/features/auth/presentation/secreen/register_send_code.dart';
+import 'package:med_dos/features/home_menu/docto_%20details/presentation/screen/doctor_details.dart';
 import 'package:med_dos/features/profile/presentation/secreen/setting_screen.dart';
 import 'package:med_dos/features/auth/presentation/secreen/Onboarding1_splash.dart';
 import 'package:med_dos/features/auth/presentation/secreen/login_screen.dart';
 import 'package:med_dos/features/auth/presentation/secreen/register_screen.dart';
 import 'package:med_dos/features/auth/presentation/secreen/reset_password_screen.dart';
 import 'package:med_dos/features/auth/presentation/secreen/send_code_screen.dart';
-import 'package:med_dos/features/auth/presentation/secreen/splash_screen.dart';
 import 'package:med_dos/features/home/screen/home_screen.dart';
 import 'package:med_dos/features/profile/presentation/secreen/change_password_screen.dart';
 import 'package:med_dos/features/profile/presentation/secreen/update_profile_screen.dart';
 
+import '../../features/home_menu/presintion/screen/doctor_menu.dart';
 import '../../features/profile/presentation/secreen/profile_home_screen.dart';
 
 class Routes{
@@ -28,6 +29,8 @@ class Routes{
  static const String register='/register';
  static const String home='/home';
  static const String registerCode='/register_send_code';
+ static const String doctorMenu='/doctor_menu';
+ static const String doctorDetails='/doctor_details';
 
 
 }
@@ -58,6 +61,10 @@ class AppRoutes{
     return MaterialPageRoute(builder: (_)=>const HomeScreen());
    case Routes.registerCode:
     return MaterialPageRoute(builder: (_)=>const RegisterSendCode());
+   case Routes.doctorMenu:
+    return MaterialPageRoute(builder: (_)=>const DoctorMenu());
+   case Routes.doctorDetails:
+    return MaterialPageRoute(builder: (_)=>const DoctorDetails());
 
    default:
     return MaterialPageRoute(builder: (_)=>const Scaffold(

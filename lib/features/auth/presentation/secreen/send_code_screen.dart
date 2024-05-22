@@ -7,11 +7,11 @@ import 'package:med_dos/core/routes/app_routes.dart';
 import 'package:med_dos/core/utils/app_assets.dart';
 import 'package:med_dos/core/utils/app_colors.dart';
 import 'package:med_dos/core/utils/commons.dart';
-import 'package:med_dos/core/utils/widget/app_string.dart';
-import 'package:med_dos/core/utils/widget/custom_text_form_field.dart';
-import 'package:med_dos/core/utils/widget/custombutton.dart';
-import 'package:med_dos/core/utils/widget/customimage.dart';
 import 'package:med_dos/features/auth/presentation/cubit/forget_password_cubit/forget_password_cubit.dart';
+import '../../../../core/utils/app_string.dart';
+import '../../../../core/widget/custom_text_form_field.dart';
+import '../../../../core/widget/custombutton.dart';
+import '../../../../core/widget/customimage.dart';
 import '../cubit/forget_password_cubit/forget_password_state.dart';
 
 class SendCodeScreen extends StatelessWidget {

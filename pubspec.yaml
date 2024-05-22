@@ -49,6 +49,7 @@ dependencies:
   url_launcher:
   carousel_slider:
   flutter_svg:
+  cached_network_image:
 
 
 

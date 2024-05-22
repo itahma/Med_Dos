@@ -3,13 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:med_dos/core/local/app_local.dart';
+import 'package:med_dos/core/routes/app_routes.dart';
 import 'package:med_dos/core/utils/app_assets.dart';
 import 'package:med_dos/core/utils/app_colors.dart';
-import 'package:med_dos/core/utils/widget/app_string.dart';
-import 'package:med_dos/core/utils/widget/customimage.dart';
+import 'package:med_dos/core/utils/app_string.dart';
+import 'package:med_dos/core/utils/commons.dart';
+import 'package:med_dos/core/widget/customimage.dart';
 import 'package:med_dos/features/home_menu/data/model/home_menu_model.dart';
 
-import '../../../core/utils/widget/custom_text_form_field.dart';
+import '../../../../core/widget/custom_text_form_field.dart';
 
 
 class MenuHomeScreen extends StatefulWidget {
@@ -130,29 +132,32 @@ class _MenuHomeScreenState extends State<MenuHomeScreen> {
                   itemBuilder: (context, index) {
                     return Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Container(
-                        decoration: BoxDecoration(
-                            color: const Color(0xff91BAEF).withOpacity(.2),
-                            borderRadius: BorderRadius.circular(15)),
-                        width: 80,
-                        child: Column(
-                          children: [
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            SvgPicture.asset(
-                              height: 40.0.h,
-                              width: 40.0.w,
-                              allowDrawingOutsideViewBox: true,
-                              section[index].icon,
-                              color: AppColors.primary,
-                              matchTextDirection: true,
-                            ),
-                            Text(
-                              section[index].title.tr(context),
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                          ],
+                      child: InkWell(
+                        onTap: (){navigate(context: context, route: Routes.doctorMenu);},
+                        child: Container(
+                          decoration: BoxDecoration(
+                              color: const Color(0xff91BAEF).withOpacity(.2),
+                              borderRadius: BorderRadius.circular(15)),
+                          width: 80,
+                          child: Column(
+                            children: [
+                              const SizedBox(
+                                height: 10,
+                              ),
+                              SvgPicture.asset(
+                                height: 40.0.h,
+                                width: 40.0.w,
+                                allowDrawingOutsideViewBox: true,
+                                section[index].icon,
+                                color: AppColors.primary,
+                                matchTextDirection: true,
+                              ),
+                              Text(
+                                section[index].title.tr(context),
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     );
@@ -165,7 +170,7 @@ class _MenuHomeScreenState extends State<MenuHomeScreen> {
               SizedBox(
                 height: 200,
                 child: GridView.builder(
-                  padding: const EdgeInsets.all(12),
+                  padding: const EdgeInsets.all(6),
                   gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
                     maxCrossAxisExtent: 250,
                     childAspectRatio: 3 / 2,
@@ -176,32 +181,32 @@ class _MenuHomeScreenState extends State<MenuHomeScreen> {
                   physics: const BouncingScrollPhysics(),
                   itemCount: 4,
                   itemBuilder: (context, index) {
-                    return Container(
-                      decoration: BoxDecoration(
-                          color: AppColors.primary.withOpacity(.8),
-                          borderRadius: BorderRadius.circular(15)),
-                      alignment: Alignment.center,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(listGrid[index].title.tr(context),
-                              overflow: TextOverflow.ellipsis,
-                              style: const TextStyle(
-                                color: AppColors.white,
-                              )),
-                          Padding(
-                            padding: const EdgeInsets.all(5),
-                            child: SvgPicture.asset(
-                              height: 50.0.h,
-                              width: 50.0.w,
+                    return InkWell(
+
+                      child: Container(
+                        decoration: BoxDecoration(
+                            color: AppColors.primary.withOpacity(.8),
+                            borderRadius: BorderRadius.circular(15)),
+                        alignment: Alignment.center,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(listGrid[index].title.tr(context),
+                               overflow:TextOverflow.ellipsis ,
+                                style: const TextStyle(
+                                  color: AppColors.white,
+                                )),
+                            SvgPicture.asset(
+                              height: 45.0.h,
+                              width: 45.0.w,
                               allowDrawingOutsideViewBox: true,
                               listGrid[index].icon,
                               color: AppColors.white,
                               matchTextDirection: true,
                             ),
-                          ),
 
-                        ],
+                          ],
+                        ),
                       ),
                     );
                   },

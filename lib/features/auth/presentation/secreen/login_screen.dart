@@ -7,12 +7,13 @@ import 'package:med_dos/core/routes/app_routes.dart';
 import 'package:med_dos/core/utils/app_assets.dart';
 import 'package:med_dos/core/utils/app_colors.dart';
 import 'package:med_dos/core/utils/commons.dart';
-import 'package:med_dos/core/utils/widget/app_string.dart';
-import 'package:med_dos/core/utils/widget/custom_text_form_field.dart';
-import 'package:med_dos/core/utils/widget/custombutton.dart';
-import 'package:med_dos/core/utils/widget/customimage.dart';
+import 'package:med_dos/core/utils/app_string.dart';
+import 'package:med_dos/core/widget/custom_text_form_field.dart';
+import 'package:med_dos/core/widget/customimage.dart';
 import 'package:med_dos/features/auth/presentation/cubit/login/login_cubit/login_cubit.dart';
 import 'package:med_dos/features/auth/presentation/cubit/login/login_cubit/login_state.dart';
+
+import '../../../../core/widget/custombutton.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
