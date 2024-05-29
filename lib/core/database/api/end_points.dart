@@ -1,43 +1,23 @@
 class EndPoint {
-  static const String baseUrl = 'https://food-api-omega.vercel.app/api/v1/';
-  static const String medSignIn = 'chef/signin';
-  static const String medSignUp = 'chef/signin';
-  static const String medChangePassword = 'chef/change-password';
-  static const String chefDelete = 'chef/delete';
-  static const String chefGet = 'chef/get-chef/';
-  static const String sendCode = 'chef/send-code';
-  static const String changeForgottenPassword =
-      'chef/change-forgotten-password';
-  static const String updateChef = 'chef/update';
-  static const String logout = 'chef/logout';
-  static const String addMeal = 'meal/add-to-menu';
-  static const String updateMeal = 'chef/update-meal/';
-  static const String deleteMeal = 'meal/delete-meal/';
-  static const String getAllMeal = 'meal/get-meals';
+  static const String baseUrl = 'http://192.168.109.128:8000/api/';
+  static const String medSignIn = 'Auth/login';
+  static const String medSignUp = 'user/adduserProfile';
+  static const String sendCode = 'Auth/resetpassword';
+  static const String registerSendCode = 'Auth/register';
+  static const String changeForgottenPassword = 'Auth/validateCode';
 
-  static String getChefDataEndPoint(id) {
-    return '$chefGet$id';
-  }
-
-  static String getupdateMealEndPoint(id) {
-    return '$updateMeal$id';
-  }
-
-  static String getdeleteMealEndPoint(id) {
-    return '$updateMeal$id';
-  }
 }
 
 class ApiKeys {
-  static const String firstName='firstName';
-      static const String lastName='lastName';
+  static const String firstName='First_Name';
+      static const String lastName='Last_Name';
       static const  String phone='phone';
   static const String email = 'email';
-  static const String dataBirth = 'dataBirth';
+  static const String dataBirth = 'dateBearthday';
   static const String password = 'password';
   static const String confirmPassword = 'confirmPassword';
   static const String code = 'code';
   static const String message = 'message';
-  static const String token = 'token';
-  static const String groupVal = 'groupVal';
+  static const String token = 'x-jwt';
+  static const String gender = 'gender';
 }

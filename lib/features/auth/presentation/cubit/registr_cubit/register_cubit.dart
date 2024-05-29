@@ -6,12 +6,13 @@ import 'package:med_dos/core/database/cache/cache_helper.dart';
 import 'package:med_dos/core/service/service_locatro.dart';
 import 'package:med_dos/features/auth/data/models/register_model.dart';
 import 'package:med_dos/features/auth/data/repository/auth_repository.dart';
+import 'package:med_dos/features/auth/presentation/cubit/register_send_code/redister_send_code_state.dart';
 import 'register_state.dart';
 
 class RegisterCubit extends Cubit<RegisterState> {
   RegisterCubit(this.authRepo,) : super(RegisterInitial());
   final AuthRepository authRepo;
-  GlobalKey<FormState>registerKey = GlobalKey<FormState>();
+  GlobalKey<FormState>registerKey = GlobalKey<FormState>(debugLabel: '4');
   TextEditingController emailController = TextEditingController();
   TextEditingController firstNameController = TextEditingController();
   TextEditingController lastNameController = TextEditingController();
@@ -39,8 +40,9 @@ class RegisterCubit extends Cubit<RegisterState> {
 
   RegisterModel?registerModel;
   TextEditingController codeController = TextEditingController();
-  TextEditingController groupValController = TextEditingController();
+  TextEditingController gender = TextEditingController();
   void register() async {
+    print(groupVal);
     emit(RegisterLoadingState());
     final result = await authRepo.register(
         firstName: firstNameController.text,
@@ -48,10 +50,10 @@ class RegisterCubit extends Cubit<RegisterState> {
         phone: phoneController.text,
         email: emailController.text,
         password: passwordController.text,
-        confirmPassword: confirmPasswordController.text,
+       // confirmPassword: confirmPasswordController.text,
         date: datePickerController.text,
       code: codeController.text,
-      groupVal: groupValController.text,
+      gender: groupVal,
 
     );
     result.fold((l) => emit(RegisterErrorState(l)), (r) async{
@@ -60,14 +62,17 @@ class RegisterCubit extends Cubit<RegisterState> {
       emit(RegisterSucessState());
     });
   }
+
+
   void sendCodeRegister() async {
-    emit(RegisterLoadingState());
-    final res = await authRepo.sendCode(emailController.text);
-    res.fold((l) => emit(RegisterErrorState(l)), (r) => emit(RegisterSucessState()));
+    emit(SendCodeRegisterLoading());
+    final res = await authRepo.registerSendCode(emailController.text);
+    res.fold((l) => emit(SendCodeRegisterError(l)),
+            (r) => emit(RegisterSendCodeSucess(r)));
   }
 
-  String groupVal = 'male';
 
+  String groupVal = 'male';
   void changeGroupVal(val) {
     groupVal = val;
     emit(ChangeGroupState());

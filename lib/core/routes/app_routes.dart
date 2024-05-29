@@ -12,7 +12,6 @@ import 'package:med_dos/features/auth/presentation/secreen/send_code_screen.dart
 import 'package:med_dos/features/home/screen/home_screen.dart';
 import 'package:med_dos/features/profile/presentation/secreen/change_password_screen.dart';
 import 'package:med_dos/features/profile/presentation/secreen/update_profile_screen.dart';
-
 import '../../features/home_menu/presintion/screen/doctor_menu.dart';
 import '../../features/profile/presentation/secreen/profile_home_screen.dart';
 

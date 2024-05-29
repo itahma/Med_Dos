@@ -9,9 +9,10 @@ class LoginModel {
     required this.token,
   });
 
-  factory LoginModel.fromJson(Map<String, dynamic> jsonData) {
+  factory LoginModel.fromJson(jsonData) {
+
     return LoginModel(
-        message: jsonData[ApiKeys.message],
-        token: jsonData[ApiKeys.token]);
+        message: jsonData.data[ApiKeys.email],
+        token: jsonData.headers.value(ApiKeys.token));
   }
 }

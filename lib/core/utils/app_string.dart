@@ -60,7 +60,7 @@ class AppString {
   static const String createYourNewPassword = 'createYourNewPassword';
   static const String howDoYouFeel = 'howDoYouFeel';
   static const String whatAreYouLookingFor = 'whatAreYouLookingFor';
-
+  static const String registerSuccess = 'Register Successfully !!';
   static const String cardiology ='cardiology';
   static const String dermatology ='dermatology';
   static const String neurology ='neurology';

@@ -21,9 +21,6 @@ class SendCodeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        // leading: IconButton(icon: const Icon(Icons.arrow_back_ios),onPressed: (){
-        //   navigateReplacement(context: context, route: Routes.login);
-        // }),
         elevation: 0.0,
         title: Text(AppString.forgetPassword.tr(context)),
       ),
@@ -32,10 +29,14 @@ class SendCodeScreen extends StatelessWidget {
         child: SingleChildScrollView(
           child: BlocConsumer<ForgetPasswordCubit, ForgetPasswordState>(
             listener: (context, state) {
+              print(state);
               if(state is SendCodeSuccess){
+
                 showToast(message: AppString.checkMail.tr(context), state: ToastState.success);
                 navigateReplacement(context: context, route: Routes.restPassword);
               }
+
+
 
             },
             builder: (context, state) {

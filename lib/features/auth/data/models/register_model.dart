@@ -9,9 +9,9 @@ class RegisterModel {
     required this.token,
   });
 
-  factory RegisterModel.fromJson(Map<String, dynamic> jsonData) {
+  factory RegisterModel.fromJson( jsonData) {
     return RegisterModel(
-        message: jsonData[ApiKeys.message],
-        token: jsonData[ApiKeys.token]);
+        message: "register success!!",
+        token: jsonData.headers.value(ApiKeys.token));
   }
 }

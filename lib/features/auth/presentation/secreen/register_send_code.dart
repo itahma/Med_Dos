@@ -9,6 +9,7 @@ import 'package:med_dos/core/utils/commons.dart';
 import 'package:med_dos/features/auth/presentation/cubit/register_send_code/redister_send_code_cubit.dart';
 import 'package:med_dos/features/auth/presentation/cubit/register_send_code/redister_send_code_state.dart';
 import 'package:med_dos/features/auth/presentation/cubit/registr_cubit/register_cubit.dart';
+import 'package:med_dos/features/auth/presentation/cubit/registr_cubit/register_state.dart';
 
 import '../../../../core/utils/app_assets.dart';
 import '../../../../core/utils/app_colors.dart';
@@ -33,17 +34,18 @@ class RegisterSendCode extends StatelessWidget {
       body: SafeArea(
 
         child: SingleChildScrollView(
-          child: BlocConsumer<RegisterSendCodeCubit, RegisterSendCodeState>(
+          child: BlocConsumer<RegisterCubit, RegisterState>(
             listener: (context, state) {
-              if(state is RegisterSendCodeSuccess){
-                showToast(message: AppString.checkMail.tr(context), state: ToastState.success);
+              print(state);
+              if(state is RegisterSucessState){
+                showToast(message: AppString.registerSuccessfully.tr(context), state: ToastState.success);
                 navigateReplacement(context: context, route: Routes.home);
               }
 
             },
             builder: (context, state) {
               return Form(
-                key: BlocProvider.of<RegisterSendCodeCubit>(context).sendCodeKeyRegister,
+
                 child: Column(
                   children: [
                     Stack(
@@ -68,8 +70,8 @@ class RegisterSendCode extends StatelessWidget {
                       child: Column(children: [
 
                         CustomTextFormField(
-                          controller: BlocProvider.of<RegisterSendCodeCubit>(context)
-                              .registerCodeController,
+                          controller: BlocProvider.of<RegisterCubit>(context)
+                              .codeController,
                           hint: AppString.code.tr(context),
                           icon: Icons.code,
                           validate: (data) {
@@ -91,12 +93,9 @@ class RegisterSendCode extends StatelessWidget {
                       padding: const EdgeInsets.all(24),
                       child:state is RegisterSendCodeLoading ?const SpinKitFadingCircle(color: AppColors.primary,): CustomButton(
                         onPressed: () {
-                          if (BlocProvider.of<RegisterSendCodeCubit>(context)
-                              .sendCodeKeyRegister
-                              .currentState!
-                              .validate()) {
+
                             BlocProvider.of<RegisterCubit>(context).register();
-                          }
+
                         },
                         text: AppString.confirm.tr(context),
                       ),

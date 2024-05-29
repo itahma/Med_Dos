@@ -7,6 +7,7 @@ import 'package:med_dos/core/local/app_local.dart';
 import 'package:med_dos/core/utils/app_assets.dart';
 import 'package:med_dos/core/utils/app_colors.dart';
 import 'package:med_dos/core/utils/commons.dart';
+import 'package:med_dos/features/auth/presentation/cubit/register_send_code/redister_send_code_cubit.dart';
 import 'package:med_dos/features/auth/presentation/cubit/registr_cubit/register_cubit.dart';
 import 'package:med_dos/features/auth/presentation/cubit/registr_cubit/register_state.dart';
 
@@ -29,9 +30,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        leading: IconButton(icon:const Icon(Icons.arrow_back_ios),onPressed: (){
-          navigateReplacement(context: context, route: Routes.login);
-        }),
+        leading: IconButton(
+            icon: const Icon(Icons.arrow_back_ios),
+            onPressed: () {
+              navigateReplacement(context: context, route: Routes.login);
+            }),
         title: Text(AppString.signUp.tr(context)),
       ),
       body: SafeArea(
@@ -61,17 +64,20 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 padding: const EdgeInsets.all(24),
                 child: BlocConsumer<RegisterCubit, RegisterState>(
                   listener: (context, state) {
-                    if (state is RegisterSucessState){
+
+                    if (state is RegisterSendCodeSucess)
+                    {
+
                       showToast(
                           message: AppString.registerSuccessfully.tr(context),
                           state: ToastState.success);
-                      navigateReplacement(context: context, route: Routes.registerCode);
+                      navigateReplacement(
+                          context: context, route: Routes.registerCode);
                     }
-                    if(state is RegisterErrorState){
+                    if (state is RegisterErrorState) {
                       showToast(
                           message: AppString.loginFailed.tr(context),
                           state: ToastState.error);
-
                     }
                   },
                   builder: (context, state) {
@@ -80,31 +86,30 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       child: Column(
                         children: [
                           CustomTextFormField(
-                            controller:BlocProvider.of<RegisterCubit>(context).firstNameController,
+                            controller: BlocProvider.of<RegisterCubit>(context)
+                                .firstNameController,
                             hint: AppString.firstName.tr(context),
                             hitColors: AppColors.grey,
                             icon: Icons.person,
-                            validate: (data){
-                              if (data!.isEmpty ||
-                                 data.length>13) {
+                            validate: (data) {
+                              if (data!.isEmpty || data.length > 13) {
                                 return AppString.pleaseEnterValidName
                                     .tr(context);
                               }
                               return null;
-
                             },
                           ),
                           const SizedBox(
                             height: 32,
                           ),
                           CustomTextFormField(
-                            controller:BlocProvider.of<RegisterCubit>(context).lastNameController,
-                            hint:AppString.lastName.tr(context),
+                            controller: BlocProvider.of<RegisterCubit>(context)
+                                .lastNameController,
+                            hint: AppString.lastName.tr(context),
                             hitColors: AppColors.grey,
                             icon: Icons.person,
-                            validate: (data){
-                              if (data!.isEmpty ||
-                                  data.length>13) {
+                            validate: (data) {
+                              if (data!.isEmpty || data.length > 13) {
                                 return AppString.pleaseEnterValidName
                                     .tr(context);
                               }
@@ -115,7 +120,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             height: 32,
                           ),
                           CustomTextFormField(
-                            controller:BlocProvider.of<RegisterCubit>(context).emailController,
+                            controller: BlocProvider.of<RegisterCubit>(context)
+                                .emailController,
                             hint: AppString.email.tr(context),
                             hitColors: AppColors.grey,
                             icon: Icons.email,
@@ -132,16 +138,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             height: 32,
                           ),
                           CustomTextFormField(
-                            controller:BlocProvider.of<RegisterCubit>(context).phoneController,
+                            controller: BlocProvider.of<RegisterCubit>(context)
+                                .phoneController,
                             hint: AppString.phone.tr(context),
                             hitColors: AppColors.grey,
                             keyboardType: TextInputType.phone,
                             icon: Icons.phone,
-                            validate: (data){
-                              if(data!.isEmpty||data.length>14){
+                            validate: (data) {
+                              if (data!.isEmpty || data.length > 14) {
                                 return AppString.pleaseEnterValidPhone
                                     .tr(context);
-
                               }
                               return null;
                             },
@@ -150,18 +156,18 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             height: 32,
                           ),
                           CustomTextFormField(
-                            controller:BlocProvider.of<RegisterCubit>(context).passwordController,
-                            hint:AppString.password.tr(context),
+                            controller: BlocProvider.of<RegisterCubit>(context)
+                                .passwordController,
+                            hint: AppString.password.tr(context),
                             hitColors: AppColors.grey,
                             isPassword: BlocProvider.of<RegisterCubit>(context)
                                 .isRegisterPasswordShowing,
-                            icon:
-                            BlocProvider.of<RegisterCubit>(context).suffixIcon,
+                            icon: BlocProvider.of<RegisterCubit>(context)
+                                .suffixIcon,
                             suffixIconOnPressed: () {
                               BlocProvider.of<RegisterCubit>(context)
                                   .changeRegisterPasswordSuffixIcon();
                             },
-
                             validate: (data) {
                               if (data!.length < 6 || data.isEmpty) {
                                 return AppString.pleaseEnterValidPassword
@@ -174,20 +180,23 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             height: 32,
                           ),
                           CustomTextFormField(
-                            controller: BlocProvider.of<RegisterCubit>(context).confirmPasswordController,
+                            controller: BlocProvider.of<RegisterCubit>(context)
+                                .confirmPasswordController,
                             hint: AppString.confirmPassword.tr(context),
                             hitColors: AppColors.grey,
                             isPassword: BlocProvider.of<RegisterCubit>(context)
                                 .isRegisterConfirmPasswordShowing,
-                            icon:
-                            BlocProvider.of<RegisterCubit>(context).suffixIconConfirm,
+                            icon: BlocProvider.of<RegisterCubit>(context)
+                                .suffixIconConfirm,
                             suffixIconOnPressed: () {
                               BlocProvider.of<RegisterCubit>(context)
                                   .changeConfirmRegisterPasswordSuffixIcon();
                             },
-
                             validate: (data) {
-                              if (data!= BlocProvider.of<RegisterCubit>(context).passwordController.text) {
+                              if (data !=
+                                  BlocProvider.of<RegisterCubit>(context)
+                                      .passwordController
+                                      .text) {
                                 return AppString.pleaseEnterValidPassword
                                     .tr(context);
                               }
@@ -197,18 +206,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           const SizedBox(
                             height: 32,
                           ),
-                        CustomTextFormField(
-                          controller:BlocProvider.of<RegisterCubit>(context).datePickerController,
-                          readOnly: true,
-                          onTap:()=>BlocProvider.of<RegisterCubit>(context).onTapFunction(context: context) ,
-                          icon: Icons.date_range,
-                          hint: AppString.dateOfBirth.tr(context),
+                          CustomTextFormField(
+                            controller: BlocProvider.of<RegisterCubit>(context)
+                                .datePickerController,
+                            readOnly: true,
+                            onTap: () => BlocProvider.of<RegisterCubit>(context)
+                                .onTapFunction(context: context),
+                            icon: Icons.date_range,
+                            hint: AppString.dateOfBirth.tr(context),
                             hitColors: AppColors.grey,
-
-
-
-                        ),
-
+                          ),
                           const SizedBox(
                             height: 32,
                           ),
@@ -217,12 +224,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               Row(
                                 children: [
                                   Radio(
-
                                       activeColor: AppColors.primary,
-                                      value:'Male',//BlocProvider.of<RegisterCubit>(context).maleController.text,
-                                      groupValue: BlocProvider.of<RegisterCubit>(context).groupVal,
+                                      value: 'Male',
+                                      //BlocProvider.of<RegisterCubit>(context).maleController.text,
+                                      groupValue:
+                                          BlocProvider.of<RegisterCubit>(
+                                                  context)
+                                              .groupVal,
                                       onChanged: (val) {
-                                        BlocProvider.of<RegisterCubit>(context).changeGroupVal(val);
+                                        BlocProvider.of<RegisterCubit>(context)
+                                            .changeGroupVal(val);
                                       }),
                                   Text(AppString.male.tr(context))
                                 ],
@@ -232,29 +243,37 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 children: [
                                   Radio(
                                       activeColor: AppColors.primary,
-                                      value: 'Female',//BlocProvider.of<RegisterCubit>(context).femaleController.text,
-                                      groupValue: BlocProvider.of<RegisterCubit>(context).groupVal,
+                                      value: 'Female',
+                                      //BlocProvider.of<RegisterCubit>(context).femaleController.text,
+                                      groupValue:
+                                          BlocProvider.of<RegisterCubit>(
+                                                  context)
+                                              .groupVal,
                                       onChanged: (val) {
-                                        BlocProvider.of<RegisterCubit>(context).changeGroupVal(val);
+                                        BlocProvider.of<RegisterCubit>(context)
+                                            .changeGroupVal(val);
                                       }),
                                   Text(AppString.female.tr(context)),
                                 ],
                               ),
                             ],
                           ),
-                          state is RegisterLoadingState?const SpinKitFadingCircle(color: AppColors.primary,):
-                          CustomButton(onPressed: () {
-                            if (BlocProvider.of<RegisterCubit>(context)
-                                .registerKey
-                                .currentState!
-                                .validate()) {
-
-                              BlocProvider.of<RegisterCubit>(context).sendCodeRegister();
-                            }
-                            //navigate(context: context, route: Routes.home);
-
-                          },
-                              text: AppString.signUp.tr(context))
+                          state is RegisterLoadingState
+                              ? const SpinKitFadingCircle(
+                                  color: AppColors.primary,
+                                )
+                              : CustomButton(
+                                  onPressed: () {
+                                    if (BlocProvider.of<RegisterCubit>(context)
+                                        .registerKey
+                                        .currentState!
+                                        .validate()) {
+                                      BlocProvider.of<RegisterCubit>(context)
+                                          .sendCodeRegister();
+                                    }
+                                    //navigate(context: context, route: Routes.home);
+                                  },
+                                  text: AppString.signUp.tr(context))
                         ],
                       ),
                     );

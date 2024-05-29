@@ -71,7 +71,7 @@ class DioConsumer extends ApiConsumer {
         data: data,
         queryParameters: queryParameters,
       );
-      return res.data;
+      return res;
     } on DioException catch (e) {
       handleDioException(e);
     }
@@ -80,20 +80,43 @@ class DioConsumer extends ApiConsumer {
   @override
   Future post(
       String path, {
-        Object? data,
+        dynamic data,
         Map<String, dynamic>? queryParameters,
+        bool isFormData=false,
       }) async {
     try {
       var res = await dio.post(
         path,
-        data: data,
+        data: isFormData? FormData.fromMap(data):data,
         queryParameters: queryParameters,
       );
-      return res.data;
+      return res;
     } on DioException catch (e) {
       handleDioException(e);
     }
   }
+
+
+
+  @override
+  Future put(
+      String path, {
+        Object? data,
+        Map<String, dynamic>? queryParameters,
+      }) async {
+    try {
+      var res = await dio.put(
+        path,
+        data: data,
+        queryParameters: queryParameters,
+      );
+      return res;
+
+    } on DioException catch (e) {
+      handleDioException(e);
+    }
+  }
+
 
   handleDioException(e) {
     switch (e.type) {
@@ -136,4 +159,7 @@ class DioConsumer extends ApiConsumer {
     // throw ServerException('badResponse');
     }
   }
+
+
+
 }

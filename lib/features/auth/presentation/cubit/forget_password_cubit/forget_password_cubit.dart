@@ -8,18 +8,19 @@ import 'forget_password_state.dart';
 class ForgetPasswordCubit extends Cubit<ForgetPasswordState> {
   ForgetPasswordCubit(this.authRepository) : super(ForgetPasswordInitial());
   final AuthRepository authRepository;
-  GlobalKey<FormState>sendCodeKey = GlobalKey<FormState>();
+  GlobalKey<FormState>sendCodeKey = GlobalKey<FormState>(debugLabel: '2');
 
   TextEditingController emailController = TextEditingController();
 
   void sendCode() async {
     emit(SendCodeLoading());
     final res = await authRepository.sendCode(emailController.text);
+
     res.fold((l) => emit(SendCodeErrore(l)), (r) => emit(SendCodeSuccess(r)));
   }
 
   //NewPassword
-  GlobalKey<FormState>resetPasswordKey = GlobalKey<FormState>();
+  GlobalKey<FormState>resetPasswordKey = GlobalKey<FormState>(debugLabel: '1');
   TextEditingController newPasswordController = TextEditingController();
   bool isNewPasswordShowing = true;
   IconData suffixIconNewPassword = Icons.visibility;
@@ -51,10 +52,8 @@ class ForgetPasswordCubit extends Cubit<ForgetPasswordState> {
   void resetPassword() async {
     emit(ResetPasswordLoading());
     final res = await authRepository.resetPassword(
-
       email:  emailController.text,
       password: newPasswordController.text,
-      confirmPassword: confirmPasswordController.text,
       code: codeController.text,
 
     );

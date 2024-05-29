@@ -55,17 +55,16 @@ class _LoginScreenState extends State<LoginScreen> {
                 padding: const EdgeInsets.all(24),
                 child: BlocConsumer<LoginCubit, LoginState>(
                   listener: (context, state) {
+                    print(state);
                     if (state is LoginSucessState){
                       showToast(
                           message: AppString.loginSuccessfully.tr(context),
                           state: ToastState.success);
                       navigateReplacement(context: context, route: Routes.home);
                     }
-                    if(state is LoginErrorState){
+                    if (state is LoginErrorState) {
                       showToast(
-                          message: AppString.loginFailed.tr(context),
-                          state: ToastState.error);
-
+                          message: state.message, state: ToastState.error);
                     }
                   },
                   builder: (context, state) {
@@ -136,14 +135,13 @@ class _LoginScreenState extends State<LoginScreen> {
                           SizedBox(
                             height: 32.h,
                           ),
-                        state is LoginLoadingState?SpinKitFadingCircle(color: AppColors.primary,):
+                        state is LoginLoadingState?const SpinKitFadingCircle(color: AppColors.primary,):
                         CustomButton(
                             onPressed: () {
                               if (BlocProvider.of<LoginCubit>(context)
                                   .loginKey
                                   .currentState!
                                   .validate()) {
-                                print('Login');
                                  BlocProvider.of<LoginCubit>(context).login();
                               }
                             },

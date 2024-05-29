@@ -11,7 +11,7 @@ import 'login_state.dart';
 class LoginCubit extends Cubit<LoginState> {
   LoginCubit(this.authRepo) : super(LoginInitial());
   final AuthRepository authRepo;
-  GlobalKey<FormState>loginKey = GlobalKey<FormState>();
+  GlobalKey<FormState>loginKey = GlobalKey<FormState>(debugLabel: '3');
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   bool isLoginPasswordShowing = true;
@@ -26,18 +26,24 @@ class LoginCubit extends Cubit<LoginState> {
 
   //login method
   LoginModel? loginModel;
+
   void login() async {
-    emit(LoginLoadingState());
-    final result = await authRepo.login(
-        email: emailController.text,
-        password: passwordController.text);
-    result.fold(
-      (l) => emit(LoginErrorState(l)),
-      (r) async{
-        loginModel=r;
-        await sl<CacheHelper>().saveData(key: ApiKeys.token, value:r.token);
-        emit(LoginSucessState());
-      },
-    );
-  }
-}
+
+      emit(LoginLoadingState());
+      final result = await authRepo.login(
+          email: emailController.text,
+          password: passwordController.text);
+      result.fold(
+            (l) => emit(LoginErrorState(l)),
+            (r) async {
+          loginModel = r;
+
+          await sl<CacheHelper>().saveData(
+              key: ApiKeys.token,
+              value: r.token,
+          );
+          emit(LoginSucessState());
+        },
+      );
+
+  }}

@@ -73,7 +73,7 @@ class _OnBoarding1ScreenState extends State<OnBoarding1Screen> {
             builder: (context, state) {
               return IconButton(
                 icon: const Icon(
-                    Icons.language, color: AppColors.blue),
+                    Icons.language, color: AppColors.white),
 
                 onPressed: () {
 
