@@ -129,6 +129,38 @@ class ProfileHome extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(10),
                 child: InkWell(
+                  onTap: (){navigate(context: context, route: Routes.logScreen);},
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: const Color(0xff91BAEF).withOpacity(.2),
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    //Border.all
+                    height: 55,
+                    child:  Padding(
+                      padding: const EdgeInsets.all(10),
+                      child: Row(
+                        children: [
+                          const Icon(
+                            Icons.library_books,
+                            size: 25,
+                            color: AppColors.primary,
+                          ),
+                          const SizedBox(width: 30),
+                          Text(
+                            AppString.settings.tr(context),
+                            style: const TextStyle(color: AppColors.grey, fontSize: 18),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+
+              Padding(
+                padding: const EdgeInsets.all(10),
+                child: InkWell(
                   onTap: () async {
                     Uri uri = Uri.parse('tel:+963-962-694065');
                     if (!await launcher.launchUrl(uri)) {

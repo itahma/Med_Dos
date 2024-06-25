@@ -5,11 +5,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:med_dos/core/local/app_local.dart';
 import 'package:med_dos/core/utils/app_colors.dart';
-import 'package:med_dos/features/home/component/gnav_component.dart';
-import 'package:med_dos/features/home/cubit/home_cubit.dart';
-import 'package:med_dos/features/home/cubit/home_state.dart';
+import 'package:med_dos/core/utils/app_string.dart';
+import 'package:med_dos/features/home/presentation/component/gnav_component.dart';
+import 'package:med_dos/features/home/presentation/cubit/home_cubit.dart';
+import 'package:med_dos/features/home/presentation/cubit/home_state.dart';
 
-import '../../../core/utils/app_string.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);

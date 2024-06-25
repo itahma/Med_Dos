@@ -4,8 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:med_dos/core/local/app_local.dart';
 import 'package:med_dos/core/utils/app_colors.dart';
+import 'package:med_dos/core/utils/app_string.dart';
 
-import '../../../core/utils/app_string.dart';
+
 import '../cubit/home_cubit.dart';
 
 class GNavComponent extends StatelessWidget {

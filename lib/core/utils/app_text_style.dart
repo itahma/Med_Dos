@@ -36,3 +36,11 @@ TextStyle regularStyle({
     color: Colors.white,
     fontSize: 24,
     fontWeight: FontWeight.normal);
+TextStyle blueStyle({
+  Color color =AppColors.primary,
+  double fontSize=22,
+
+})=>_textStyle(
+    color: AppColors.primary,
+    fontSize: 22,
+    fontWeight: FontWeight.normal);

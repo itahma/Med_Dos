@@ -80,6 +80,22 @@ class AppString {
   static const String laboratories ='laboratories';
   static const String radiologyCenters ='radiologyCenters';
   static const String healthCenters ='healthCenters';
+  static const String availableTime ='availableTime';
+  static const String selectAppointment ='SelectAppointment';
+  static const String bookSoonestAppointment ='bookSoonestAppointment';
+  static const String alwaysAreminder ='alwaysAreminder';
+  static const String bookingAppointment ='bookingAppointment';
+  static const String timeOfWork ='timeOfWork';
+  static const String availableNow ='availableNow';
+  static const String aboutDoctor ='aboutDoctor';
+  static const String min ='min';
+  static const String preview ='preview';
+  static const String doctor ='doctor';
+  static const String patient ='patient';
+  static const String me ='me';
+  static const String sections ='sections';
+
+
 
 
 

@@ -8,7 +8,9 @@ import 'package:med_dos/features/auth/presentation/cubit/forget_password_cubit/f
 import 'package:med_dos/features/auth/presentation/cubit/login/login_cubit/login_cubit.dart';
 import 'package:med_dos/features/auth/presentation/cubit/register_send_code/redister_send_code_cubit.dart';
 import 'package:med_dos/features/auth/presentation/cubit/registr_cubit/register_cubit.dart';
-import 'package:med_dos/features/home/cubit/home_cubit.dart';
+
+import 'package:med_dos/features/home/presentation/cubit/home_cubit.dart';
+import 'package:med_dos/features/home_menu/presintion/screen/docto_%20details/presentation/cubit/doctor_cubit.dart';
 
 import 'app/app.dart';
 import 'core/service/service_locatro.dart';
@@ -47,6 +49,10 @@ void main() async {
           BlocProvider(
             create: (context) => sl<RegisterSendCodeCubit>(),
           ),
+          BlocProvider(
+            create: (context) => sl<DoctorCubit>(),
+          ),
+
         ],
         child: MyApp(),
       ));

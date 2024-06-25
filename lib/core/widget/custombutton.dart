@@ -31,7 +31,7 @@ final String text ;
         ),
         child: Text(
           text,
-          style:Theme.of(context).textTheme.displayMedium  ,
+
         ),
 
       ),

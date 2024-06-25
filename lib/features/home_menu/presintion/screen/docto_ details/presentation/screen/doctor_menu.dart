@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:med_dos/core/utils/app_colors.dart';
 
+import '../../../../../../../core/utils/app_string.dart';
 import '../component/doctor_item_component.dart';
 
 class DoctorMenu extends StatelessWidget {
@@ -11,7 +12,12 @@ class DoctorMenu extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-          appBar: AppBar(),
+          appBar: AppBar(
+            title: Text(AppString.medDose,style: Theme.of(context).textTheme.displayMedium,) ,
+
+            elevation: 0,
+
+          ),
           body: Padding(
             padding: const EdgeInsets.all(8),
             child: Column(

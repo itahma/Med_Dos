@@ -10,6 +10,7 @@ import 'package:med_dos/core/utils/app_string.dart';
 import 'package:med_dos/core/utils/commons.dart';
 import 'package:med_dos/core/widget/customimage.dart';
 import 'package:med_dos/features/home_menu/data/model/home_menu_model.dart';
+import 'package:med_dos/features/home_menu/presintion/screen/search_screen.dart';
 
 import '../../../../core/widget/custom_text_form_field.dart';
 
@@ -59,7 +60,9 @@ class _MenuHomeScreenState extends State<MenuHomeScreen> {
               ),
               CustomTextFormField(
                 controller: TextEditingController(),
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (_)=>SearchScreen()));
+                },
                 hint: AppString.whatAreYouLookingFor.tr(context),
                 icon: Icons.search,
                 keyboardType: TextInputType.text,
@@ -182,6 +185,11 @@ class _MenuHomeScreenState extends State<MenuHomeScreen> {
                   itemCount: 4,
                   itemBuilder: (context, index) {
                     return InkWell(
+                      onTap: (){
+                        if(index==0)
+                        navigate(context: context, route: Routes.healthCentersMenu);
+
+                      },
 
                       child: Container(
                         decoration: BoxDecoration(

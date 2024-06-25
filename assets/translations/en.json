@@ -1,5 +1,5 @@
 {
-  "medDose":"MedDose",
+  "medDose": "MedDose",
   "skip": "Skip",
   "you": "You will always be up to date with everything new in the world of medicine",
   "youWill": "You will embark on a healing journey with us that will lead you to a better life",
@@ -57,7 +57,6 @@
   "ifCan": "If you have any questions, complaints, or need assistance, please feel free to contact us!",
   "registerSuccessfully": "Register Successfully",
   "sendResetLinkInfo": "Enter your email address below and we will send you a code via your mail to reset your password.",
-
   "cardiology": "Cardiology",
   "dermatology": "Dermatology",
   "neurology": "Neurology",
@@ -76,5 +75,20 @@
   "pharmacies": "Pharmacies",
   "laboratories": "Laboratories",
   "radiologyCenters": "Radiology Centers",
-  "healthCenters": "Health Centers"
+  "healthCenters": "Health Centers",
+  "availableTime": "available Time",
+  "SelectAppointment": "Select Appointment",
+  "bookSoonestAppointment": "Book soonest Appointment",
+  "alwaysAreminder": "Always a reminder",
+  "bookingAppointment": "Booking Appointment",
+  "timeOfWork": "Time of work",
+  "availableNow": "Available now",
+  "aboutDoctor": "About Doctor",
+  "min": "Min",
+  "preview": "Preview",
+  "doctor": "Doctor",
+  "patient": "Patient",
+  "me": "Me",
+  "sections": "Sections"
+
 }

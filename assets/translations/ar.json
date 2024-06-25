@@ -78,5 +78,20 @@
   "pharmacies": "صيدليات",
   "laboratories": "مخابر",
   "radiologyCenters": "مراكز أشعة",
-  "healthCenters": "مراكز صحية"
+  "healthCenters": "مراكز صحية",
+  "availableTime": "الأوقات المتاحة",
+  "SelectAppointment": "إختيار موعد",
+  "bookSoonestAppointment": "حجز قرب موعد",
+  "alwaysAreminder": "التذكير دائما",
+  "bookingAppointment": "حجز موعد",
+  "timeOfWork": "أوقات دوام العيادة",
+  "availableNow": "متوفر الآن",
+  "aboutDoctor": "لمحة عن الطبيب",
+  "min": "دقيقة",
+  "preview":"المعاينة",
+  "doctor": "الدكتور",
+  "patient": "المريض",
+  "me": "أنا",
+  "sections": "أقسام"
+
 }
