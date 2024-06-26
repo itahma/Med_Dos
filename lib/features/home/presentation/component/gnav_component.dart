@@ -5,8 +5,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:med_dos/core/local/app_local.dart';
 import 'package:med_dos/core/utils/app_colors.dart';
 import 'package:med_dos/core/utils/app_string.dart';
-
-
 import '../cubit/home_cubit.dart';
 
 class GNavComponent extends StatelessWidget {
@@ -23,8 +21,8 @@ class GNavComponent extends StatelessWidget {
 
         CurvedNavigationBarItem(
           labelStyle: const TextStyle(color: AppColors.primary),
-          child: const Icon(Icons.help_outline),
-          label:AppString.help.tr(context),
+          child: const Icon(Icons.chat_outlined),
+          label:AppString.myConsultations.tr(context),
         ),
         CurvedNavigationBarItem(
           labelStyle: const TextStyle(color: AppColors.primary),

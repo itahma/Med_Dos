@@ -61,7 +61,7 @@ class _MenuHomeScreenState extends State<MenuHomeScreen> {
               CustomTextFormField(
                 controller: TextEditingController(),
                 onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (_)=>SearchScreen()));
+                 navigate(context: context, route: Routes.searchScreen);
                 },
                 hint: AppString.whatAreYouLookingFor.tr(context),
                 icon: Icons.search,
@@ -188,6 +188,12 @@ class _MenuHomeScreenState extends State<MenuHomeScreen> {
                       onTap: (){
                         if(index==0)
                         navigate(context: context, route: Routes.healthCentersMenu);
+                        if(index==1)
+                          navigate(context: context, route: Routes.laboratoriesMenu);
+                        if(index==2)
+                          navigate(context: context, route: Routes.radiologyCenterItemMenu);
+                        if(index==3)
+                          navigate(context: context, route: Routes.pharmaciesMenu);
 
                       },
 

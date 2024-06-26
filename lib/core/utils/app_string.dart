@@ -93,7 +93,19 @@ class AppString {
   static const String doctor ='doctor';
   static const String patient ='patient';
   static const String me ='me';
+  static const String specialization ='specialization';
   static const String sections ='sections';
+  static const String chooseAnImageFromTheGallery ='chooseAnImageFromTheGallery';
+  static const String takeAPictureWithTheCamera ='takeAPictureWithTheCamera';
+  static const String uploadAPDFFile ='uploadAPDFFile';
+  static const String tellTheDoctorAboutTheSymptomsYouAreExperiencing ='tellTheDoctorAboutTheSymptomsYouAreExperiencing';
+  static const String explainYourConditionOrInquiryToTheDoctorBriefly ='explainYourConditionOrInquiryToTheDoctorBriefly';
+  static const String character ='character';
+  static const String attachAFile ='attachAFile';
+  static const String anImageHasBeenSelected ='anImageHasBeenSelected';
+  static const String thePDFFileHasBeenSelected ='thePDFFileHasBeenSelected';
+  static const String myConsultations ='myConsultations';
+
 
 
 

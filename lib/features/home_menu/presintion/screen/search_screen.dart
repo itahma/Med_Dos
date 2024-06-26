@@ -14,17 +14,21 @@ class SearchScreen extends StatefulWidget {
 }
 
 class _SearchScreenState extends State<SearchScreen> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        padding: EdgeInsets.all(10),
+      appBar: AppBar(
+        title: Text(
+          AppString.medDose,
+          style: Theme.of(context).textTheme.displayMedium,
+        ),
+        elevation: 0,
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(10),
         child: Column(
           children: [
-            SizedBox(
-              height: 20,
-            ),
+            const SizedBox(height: 20),
             CustomTextFormField(
               controller: BlocProvider.of<HomeCubit>(context).search,
               onTap: () {},
@@ -35,17 +39,16 @@ class _SearchScreenState extends State<SearchScreen> {
                 if (data == null) {}
               },
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Expanded(
-                child: Container(
-              child: Expanded(
-                child: ListView.builder(
-                  itemCount: 5,
-                  itemBuilder: (context, index) => const Padding(
-                      padding: EdgeInsets.all(8), child: DoctorItemComponent()),
+              child: ListView.builder(
+                itemCount: 5,
+                itemBuilder: (context, index) => const Padding(
+                  padding: EdgeInsets.all(8),
+                  child: DoctorItemComponent(),
                 ),
               ),
-            ))
+            ),
           ],
         ),
       ),

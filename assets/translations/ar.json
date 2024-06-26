@@ -46,7 +46,7 @@
   "contactUs": "تواصل معنا",
   "settings": "الأعدادات",
   "support": "الدعم",
-  "logOut": "تسجيب الخروج",
+  "logOut": "تسجيل الخروج",
   "deleteAccount": "حذف الحساب",
   "applicationLanguage": "لغة التطبيق",
   "medicalRecord": "السجل الطبي",
@@ -92,6 +92,17 @@
   "doctor": "الدكتور",
   "patient": "المريض",
   "me": "أنا",
-  "sections": "أقسام"
+  "specialization": "الاختصاص",
+  "myConsultations": "استشاراتي ",
+  "sections": "أقسام",
+  "chooseAnImageFromTheGallery": "اختيار صورة من المعرض",
+  "takeAPictureWithTheCamera": "التقاط صورة بالكاميرا",
+  "uploadAPDFFile": "رفع ملف PDF",
+  "character": "حرف  ",
+  "attachAFile": "إرفاق ملف (اختياري) ",
+  "anImageHasBeenSelected": "تم اختيار صورة ",
+  "thePDFFileHasBeenSelected": "تم اختيار ملف PDF",
+  "tellTheDoctorAboutTheSymptomsYouAreExperiencing": "أخبر/ي الطبيب عن الأعراض التي تعاني منها",
+  "explainYourConditionOrInquiryToTheDoctorBriefly": "اشرح للطبيب عن حالتك أو استفسارك باختصار"
 
 }

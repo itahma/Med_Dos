@@ -126,46 +126,12 @@ class ProfileHome extends StatelessWidget {
                   ),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.all(10),
-                child: InkWell(
-                  onTap: (){navigate(context: context, route: Routes.logScreen);},
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: const Color(0xff91BAEF).withOpacity(.2),
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    //Border.all
-                    height: 55,
-                    child:  Padding(
-                      padding: const EdgeInsets.all(10),
-                      child: Row(
-                        children: [
-                          const Icon(
-                            Icons.library_books,
-                            size: 25,
-                            color: AppColors.primary,
-                          ),
-                          const SizedBox(width: 30),
-                          Text(
-                            AppString.settings.tr(context),
-                            style: const TextStyle(color: AppColors.grey, fontSize: 18),
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-              ),
 
               Padding(
                 padding: const EdgeInsets.all(10),
                 child: InkWell(
                   onTap: () async {
-                    Uri uri = Uri.parse('tel:+963-962-694065');
-                    if (!await launcher.launchUrl(uri)) {
-                      debugPrint("Could not launch the uri ");
-                    }
+                   navigate(context: context, route: Routes.helpScreen);
                   },
                   child: Container(
                     decoration: BoxDecoration(
@@ -179,7 +145,7 @@ class ProfileHome extends StatelessWidget {
                       child: Row(
                         children: [
                           const Icon(
-                            Icons.phone_outlined,
+                            Icons.support,
                             size: 25,
                             color: AppColors.primary,
                           ),
@@ -196,43 +162,7 @@ class ProfileHome extends StatelessWidget {
                 ),
               ),
               Divider(height: 50,thickness:1,color: Colors.blue.shade50),
-              Padding(
-                padding: const EdgeInsets.all(10),
-                child: InkWell(
-                  onTap: (){},
-                  child: Container(
-                    decoration: BoxDecoration(
-                      border: Border.all(color: Colors.red),
-                      color:  Colors.red.withOpacity(.2),
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    //Border.all
-                    height: 55,
-                    child:  Padding(
-                      padding: const EdgeInsets.all(10),
-                      child: Row(
-                        children: [
-                          const Icon(
-                            Icons.power_settings_new,
-                            size: 25,
-                            color: Colors.red,
-                          ),
-                          const SizedBox(width: 30),
-                          Text(
-                             AppString.logOut.tr(context),
-                            style: const TextStyle(color: AppColors.grey, fontSize: 18),
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-              TextButton(onPressed: (){}
-                  , child: Text(AppString.deleteAccount.tr(context),
-                  style: const TextStyle(fontSize: 16,color:Colors.red),
-                ),
-              ),
+
             ],
           ),
         ),

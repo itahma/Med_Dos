@@ -9,13 +9,14 @@ import 'package:med_dos/features/home/data/repository/home_repository.dart';
 import 'package:med_dos/features/home_menu/presintion/screen/home_menu.dart';
 import 'package:med_dos/features/profile/presentation/secreen/profile_home_screen.dart';
 
+import '../../../myConsultations/presentation/screen/myConsultations_screen.dart';
 import 'home_state.dart';
 
 class HomeCubit extends Cubit<HomeState> {
   HomeCubit(this.homeRepository) : super(HomeInitial());
   final HomeRepository homeRepository;
   List<Widget> screens = [
-    const HelpScreen(),
+    const MyConsultations(),
     const ArticlesScreen(),
     const MenuHomeScreen(),
     const FavoriteScreen(),

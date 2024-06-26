@@ -89,6 +89,17 @@
   "doctor": "Doctor",
   "patient": "Patient",
   "me": "Me",
-  "sections": "Sections"
+  "myConsultations": "My Consultations",
+  "specialization": "Specialization",
+  "sections": "Sections",
+  "chooseAnImageFromTheGallery": "Choose an image from the gallery",
+  "takeAPictureWithTheCamera": "Take a picture with the camera",
+  "uploadAPDFFile": "Upload a PDF file",
+  "character": "Character",
+  "attachAFile": "Attach a file (optional)",
+  "anImageHasBeenSelected": "An image has been selected",
+  "thePDFFileHasBeenSelected": "The PDF file has been selected",
+  "tellTheDoctorAboutTheSymptomsYouAreExperiencing": "Tell the doctor about the symptoms you are experiencing",
+  "explainYourConditionOrInquiryToTheDoctorBriefly": "Explain your condition or inquiry to the doctor briefly"
 
 }

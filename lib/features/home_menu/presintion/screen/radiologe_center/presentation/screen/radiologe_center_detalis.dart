@@ -6,8 +6,8 @@ import 'package:med_dos/core/utils/app_string.dart';
 import 'package:url_launcher/url_launcher.dart' as launcher;
 import '../../../../../../../core/widget/custom_cached_network_image.dart';
 
-class HealthCenterDetails extends StatelessWidget {
-  const HealthCenterDetails({Key? key}) : super(key: key);
+class RadiologyCenterItemDetails extends StatelessWidget {
+  const RadiologyCenterItemDetails({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +33,7 @@ class HealthCenterDetails extends StatelessWidget {
                     child: const CustomCachedNetworkImage(
                       fit: BoxFit.cover,
                       imageUrl:
-                          "https://th.bing.com/th/id/OIP.rzvJIIoK4rs7kpN44Q5YegHaE8?rs=1&pid=ImgDetMain",
+                      "https://th.bing.com/th/id/OIP.rzvJIIoK4rs7kpN44Q5YegHaE8?rs=1&pid=ImgDetMain",
                     ),
                   ),
                 ),
@@ -42,7 +42,7 @@ class HealthCenterDetails extends StatelessWidget {
                 height: 25.h,
               ),
               Text(
-                "مركز ميد دوز الطبي (تجريبي)",
+                "مركز ميد دوز (تجريبي)",
                 style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
@@ -158,7 +158,7 @@ class HealthCenterDetails extends StatelessWidget {
                   const Padding(
                     padding: EdgeInsets.all(8.0),
                     child: Text(
-                      'اوقات دوام المركز:',
+                      'اوقات الدوام :',
                       style: TextStyle(
                           color: AppColors.grey,
                           fontSize: 16,
@@ -211,109 +211,7 @@ class HealthCenterDetails extends StatelessWidget {
                   ),
                 ],
               ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Text(
-                      'الخدمات التي يقدمها المركز :',
-                      style: TextStyle(
-                          color: AppColors.grey,
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold),
-                    ),
-                  ),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: Padding(
-                          padding: const EdgeInsets.all(8),
-                          child: Container(
-                            decoration: BoxDecoration(
-                              color: const Color(0xff91BAEF).withOpacity(.2),
-                              borderRadius: BorderRadius.circular(15),
-                            ),
-                            height: 50,
-                            child: const Padding(
-                              padding: EdgeInsets.all(8),
-                              child: Text('تحاليل طبية  ',
-                                  style: TextStyle(
-                                    color: AppColors.black,
-                                    fontSize: 15,
-                                  )),
-                            ),
-                          ),
-                        ),
-                      ),
-                      Expanded(
-                        child: Padding(
-                          padding: const EdgeInsets.all(8),
-                          child: Container(
-                            decoration: BoxDecoration(
-                              color: const Color(0xff91BAEF).withOpacity(.2),
-                              borderRadius: BorderRadius.circular(15),
-                            ),
-                            height: 50,
-                            child: const Padding(
-                              padding: EdgeInsets.all(8),
-                              child: Text('اسعافات اولية ',
-                                  style: TextStyle(
-                                    color: AppColors.black,
-                                    fontSize: 15,
-                                  )),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: Padding(
-                          padding: const EdgeInsets.all(8),
-                          child: Container(
-                            decoration: BoxDecoration(
-                              color: const Color(0xff91BAEF).withOpacity(.2),
-                              borderRadius: BorderRadius.circular(15),
-                            ),
-                            height: 50,
-                            child: const Padding(
-                              padding: EdgeInsets.all(8),
-                              child: Text('معاينة  ',
-                                  style: TextStyle(
-                                    color: AppColors.black,
-                                    fontSize: 15,
-                                  )),
-                            ),
-                          ),
-                        ),
-                      ),
-                      Expanded(
-                        child: Padding(
-                          padding: const EdgeInsets.all(8),
-                          child: Container(
-                            decoration: BoxDecoration(
-                              color: const Color(0xff91BAEF).withOpacity(.2),
-                              borderRadius: BorderRadius.circular(15),
-                            ),
-                            height: 50,
-                            child: const Padding(
-                              padding: EdgeInsets.all(8),
-                              child: Text('صور شعائية ',
-                                  style: TextStyle(
-                                    color: AppColors.black,
-                                    fontSize: 15,
-                                  )),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              )
+
 
             ],
           ),

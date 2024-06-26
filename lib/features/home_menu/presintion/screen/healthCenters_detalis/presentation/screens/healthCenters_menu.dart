@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:med_dos/core/local/app_local.dart';
 import 'package:med_dos/core/utils/app_colors.dart';
 import 'package:med_dos/features/home_menu/presintion/screen/healthCenters_detalis/presentation/component/healthCenters_item_component.dart';
 
@@ -26,7 +27,7 @@ class HealthCentersMenu extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.all(15),
                       child: Center(
-                        child: Text('مراكز صحيه',
+                        child: Text(AppString.healthCenters.tr(context),
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 18,

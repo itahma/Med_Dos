@@ -42,17 +42,32 @@ class DoctorDetails extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Container(
-                    child: IconButton(
-                      icon: BlocProvider.of<DoctorCubit>(context).isLike
-                          ? Icon(
-                              Icons.favorite,
-                              color: Colors.red,
-                            )
-                          : Icon(Icons.favorite_border),
-                      onPressed: BlocProvider.of<DoctorCubit>(context).Like,
-                    ),
-                  ),
+                 Row(
+                   children: [
+                     Container(
+                       child: IconButton(
+                         icon: BlocProvider.of<DoctorCubit>(context).isLike
+                             ? Icon(
+                           Icons.favorite,
+                           color: Colors.red,
+                         )
+                             : Icon(Icons.favorite_border),
+                         onPressed: BlocProvider.of<DoctorCubit>(context).Like,
+                       ),
+                     ),
+                     Spacer(),
+                     Container(
+                       child: IconButton(
+                         icon: Icon(Icons.chat),
+                         onPressed: (){
+                           navigate(context: context, route: Routes.medicalConsultation);
+
+                         },
+                       ),
+                     ),
+                   ],
+                 ),
+
                   Center(
                     child: Column(
                       children: [

@@ -42,111 +42,152 @@ class _SettingScreenState extends State<SettingScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
 
-        elevation: 0,
-        title: Text(
-          AppString.medDose,
-          style: Theme.of(context).textTheme.displayMedium,
+          elevation: 0,
+          title: Text(
+            AppString.medDose,
+            style: Theme.of(context).textTheme.displayMedium,
+          ),
         ),
-      ),
-      body:SingleChildScrollView(
-        child: Center(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Center(
-                child: SizedBox(
-                  width: 300.w,
-                  height: 300.h,
-                  child: const CustomImage(
-                    imagePath: AppAssets.logoIm,
+        body:SingleChildScrollView(
+          child: Center(
+            child: Column(
+              // crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Center(
+                  child: SizedBox(
+                    width: 300.w,
+                    height: 300.h,
+                    child: const CustomImage(
+                      imagePath: AppAssets.logoIm,
+                    ),
                   ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                     Padding(
-                       padding: const EdgeInsets.only(left: 16,right: 16),
-                       child: Text(AppString.applicationLanguage.tr(context)
-                       ,
-                        style: const TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20,
-                        ),
-                    ),
-                     ),
-                    const SizedBox(height: 16),
-                    SwitchListTile(
-                      title:  Text(AppString.en.tr(context)),
-                      value: _switchValue,
-                      onChanged: _onSwitchChanged,
-                      activeColor: AppColors.primary,
-                      activeTrackColor: Colors.blueAccent,
-                      inactiveTrackColor: Colors.grey[300],
-                      contentPadding: const EdgeInsets.symmetric(horizontal: 16),
-                      secondary: const Icon(Icons.language,color: AppColors.primary,),
-                    ),
-                    const SizedBox(height: 8),
-                    SwitchListTile(
-                      title:  Text(AppString.ar.tr(context)),
-                      value: _switchValueAr,
-                      onChanged: _onSwitchChangedAr,
-                      activeColor:  AppColors.primary,
-                      activeTrackColor: Colors.blueAccent,
-                      inactiveTrackColor: Colors.grey[300],
-                      contentPadding: const EdgeInsets.symmetric(horizontal: 16),
-                      secondary:  Icon(Icons.language,color: AppColors.primary,),
-                    ),
-                    const SizedBox(height: 16),
-                     Divider(thickness: 2,color: Colors.blue.shade50),
-                    // const SizedBox(height: 16),
-                    Padding(
-                      padding: const EdgeInsets.all(10),
-                      child: GestureDetector(
-                        onTap: () {
-                           navigateReplacement(context: context, route: Routes.sendCode);
-                        },
-                        child: Container(
-                          decoration: BoxDecoration(
-                            color: const Color(0xff91BAEF).withOpacity(.2),
-                            borderRadius: BorderRadius.circular(15),
+                Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                       Padding(
+                         padding: const EdgeInsets.only(left: 16,right: 16),
+                         child: Text(AppString.applicationLanguage.tr(context)
+                         ,
+                          style: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20,
                           ),
-                          //Border.all
-                          height: 55,
-                          child:  Padding(
-                            padding: const EdgeInsets.all(10),
-                            child: Row(
-                              children: [
-                                const Icon(
-                                  Icons.password,
-                                  size: 25,
-                                  color: AppColors.primary,
-                                ),
-                                const SizedBox(width: 30),
-                                Text(
-                                  AppString.passwordChanged.tr(context),
-                                  style: const TextStyle(color: AppColors.grey, fontSize: 18),
-                                )
-                              ],
+                      ),
+                       ),
+                      const SizedBox(height: 16),
+                      SwitchListTile(
+                        title:  Text(AppString.en.tr(context)),
+                        value: _switchValue,
+                        onChanged: _onSwitchChanged,
+                        activeColor: AppColors.primary,
+                        activeTrackColor: Colors.blueAccent,
+                        inactiveTrackColor: Colors.grey[300],
+                        contentPadding: const EdgeInsets.symmetric(horizontal: 16),
+                        secondary: const Icon(Icons.language,color: AppColors.primary,),
+                      ),
+                      const SizedBox(height: 8),
+                      SwitchListTile(
+                        title:  Text(AppString.ar.tr(context)),
+                        value: _switchValueAr,
+                        onChanged: _onSwitchChangedAr,
+                        activeColor:  AppColors.primary,
+                        activeTrackColor: Colors.blueAccent,
+                        inactiveTrackColor: Colors.grey[300],
+                        contentPadding: const EdgeInsets.symmetric(horizontal: 16),
+                        secondary:  Icon(Icons.language,color: AppColors.primary,),
+                      ),
+                      const SizedBox(height: 16),
+                       Divider(thickness: 2,color: Colors.blue.shade50),
+                      // const SizedBox(height: 16),
+
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: GestureDetector(
+                    onTap: () {
+                      navigateReplacement(context: context, route: Routes.sendCode);
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: const Color(0xff91BAEF).withOpacity(.2),
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      //Border.all
+                      height: 55,
+                      child:  Padding(
+                        padding: const EdgeInsets.all(10),
+                        child: Row(
+                          children: [
+                            const Icon(
+                              Icons.password,
+                              size: 25,
+                              color: AppColors.primary,
                             ),
-                          ),
+                            const SizedBox(width: 30),
+                            Text(
+                              AppString.passwordChanged.tr(context),
+                              style: const TextStyle(color: AppColors.grey, fontSize: 18),
+                            )
+
+                          ],
                         ),
                       ),
                     ),
-                  ],
+                  ),
                 ),
-              ),
+                Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: InkWell(
+                    onTap: (){},
+                    child: Container(
+                      decoration: BoxDecoration(
+                        border: Border.all(color: Colors.red),
+                        color:  Colors.red.withOpacity(.2),
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      //Border.all
+                      height: 55,
+                      child:  Padding(
+                        padding: const EdgeInsets.all(10),
+                        child: Row(
+                          children: [
+                            const Icon(
+                              Icons.power_settings_new,
+                              size: 25,
+                              color: Colors.red,
+                            ),
+                            const SizedBox(width: 30),
+                            Text(
+                              AppString.logOut.tr(context),
+                              style: const TextStyle(color: AppColors.grey, fontSize: 18),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                TextButton(onPressed: (){}
+                  , child: Text(AppString.deleteAccount.tr(context),
+                    style: const TextStyle(fontSize: 16,color:Colors.red),
+                  ),
+                ),
 
-            ],
+              ],
+            ),
           ),
         ),
-      ),
 
+      ),
     );
   }
 }
