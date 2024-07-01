@@ -12,22 +12,16 @@ final class Changeval extends DoctorState {
 @override
 List<Object> get props => [];
 }
-final class LoadingDoctorList extends DoctorState{}
-final class LoadedDoctorList extends DoctorState{
-   List<DoctorModel> doctors;
-   LoadedDoctorList(this.doctors);
+
+final class LoadingDoctorInfo extends DoctorState{}
+final class LoadedDoctorInfo extends DoctorState{
+DoctorModel doctorModel;
+LoadedDoctorInfo(this.doctorModel);
 
 }
-final class ErrorDoctorList extends DoctorState{
-   String error;
-   ErrorDoctorList(this.error);
-}
-final class ErrorBookAppointment extends DoctorState{
+final class ErrorDoctorInfo extends DoctorState{
 String error;
-ErrorBookAppointment(this.error);
+ErrorDoctorInfo(this.error);
 }
-final class SuccessBookAppointment extends DoctorState{
-String message;
-SuccessBookAppointment(this.message);
-}
+
 final class LikeDoctorState extends DoctorState{}

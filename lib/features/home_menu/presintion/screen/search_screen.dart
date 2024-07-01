@@ -43,9 +43,9 @@ class _SearchScreenState extends State<SearchScreen> {
             Expanded(
               child: ListView.builder(
                 itemCount: 5,
-                itemBuilder: (context, index) => const Padding(
+                itemBuilder: (context, index) =>  Padding(
                   padding: EdgeInsets.all(8),
-                  child: DoctorItemComponent(),
+                  child: Container()//DoctorItemComponent(),
                 ),
               ),
             ),

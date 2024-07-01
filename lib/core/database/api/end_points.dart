@@ -1,19 +1,32 @@
 class EndPoint {
-  static const String baseUrl = 'http://192.168.124.14:8000/api/';
+  static const String host = 'http://192.168.72.249:8000';
+  static const String baseUrl = '$host/api/';
+  static const String ImageUrl = '$host/';
   /////Auth/////////////////////////////////////////////////////////
   static const String medSignIn = 'Auth/login';
   static const String medSignUp = 'user/adduserProfile';
   static const String sendCode = 'Auth/resetpassword';
   static const String registerSendCode = 'Auth/register';
   static const String changeForgottenPassword = 'Auth/validateCode';
+  static const String getProfile = 'user/showmyProfile';
+ //////////////////////////cons////////////////////////////////////
+  // /
+  static const String createConnunction = 'user/addCommunication';
+  static const String getAllConnunction = 'user/getCommunications';
+  static const String getMessageConnunction = 'user/getCommunications';
   /////////////////////Doctor////////////////////////////////////////
   static const String getAllSpecialist = 'getAllSpecialist';
-  static const String getDoctorInSpecialist= 'getDoctorInSpecialist';
-  static const String getDoctorInfo = 'getDoctorInfo';
-  static const String getSoonestAppointment = 'getSoonestAppointment';
-  static const String bookAppointment = 'bookAppointment';
+  static const String getDoctorInSpecialist= 'User/searchDoctors';
+  static const String getDoctorInfo = 'user/showDoctorInfo';
+  static const String getTimeDay = 'user/availableSlots';
+  static const String getSoonestAppointment = 'user/nextAvailableSlot';
+
+  static const String bookAppointment = 'user/bookSlot';
+  static const String showMybockings = 'user/showMybockings';
+  static const String cancelbocking = 'user/cancelBooking';
+
   ///////////////////////////Article///////////////////////////////////
-  static const String getAllArticle = 'getAllArticle';
+  static const String getAllArticle = 'user/showallPost';
   static const String getArticleInfo = 'getArticleInfo';
   ////////////////////////search///////////////////////////////////////
   static const String searchAdoctor = 'searchAdoctor';
@@ -21,7 +34,7 @@ class EndPoint {
   static const String getAllHealthCenter= 'getAllArticle';
   static const String getHealthCenterInfo = 'getArticleInfo';
   ///////////////////////////Laboratories/////////////////////////////
-  static const String getAllLaboratories = 'getAllArticle';
+  static const String getAllRadioCenter = 'user/showallRadiologyLab';
   static const String getLaboratoriesInfo = 'getArticleInfo';
 }
 
@@ -38,7 +51,7 @@ class ApiKeys {
   static const String token = 'x-jwt';
   static const String gender = 'gender';
   static const String name='name';
-  static const String id='id';
+  static const String id='_id';
   static const String specialist='specialist';
   static const String imageDoctor='image';
 

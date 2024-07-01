@@ -48,12 +48,15 @@ class DioConsumer extends ApiConsumer {
       String path, {
         Object? data,
         Map<String, dynamic>? queryParameters,
+        String ?token
       }) async {
     try {
       var res = await dio.get(
         path,
         data: data,
         queryParameters: queryParameters,
+        options: Options(headers: {"x-jwt":token})
+
       );
       return res.data;
     } on DioException catch (e) {
@@ -85,14 +88,14 @@ class DioConsumer extends ApiConsumer {
         dynamic data,
         Map<String, dynamic>? queryParameters,
         bool isFormData=false,
-       // String ? token
+        String ? token
       }) async {
     try {
       var res = await dio.post(
         path,
         data: isFormData? FormData.fromMap(data):data,
         queryParameters: queryParameters,
-         // options: Options(headers: {"jwt":token})
+          options: Options(headers: {"x-jwt":token})
       );
       return res;
     } on DioException catch (e) {

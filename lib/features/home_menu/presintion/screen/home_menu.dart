@@ -1,15 +1,19 @@
+import 'dart:ui';
+
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:med_dos/core/local/app_local.dart';
 import 'package:med_dos/core/routes/app_routes.dart';
-import 'package:med_dos/core/utils/app_assets.dart';
 import 'package:med_dos/core/utils/app_colors.dart';
 import 'package:med_dos/core/utils/app_string.dart';
 import 'package:med_dos/core/utils/commons.dart';
 import 'package:med_dos/core/widget/customimage.dart';
 import 'package:med_dos/features/home_menu/data/model/home_menu_model.dart';
+import 'package:med_dos/features/home_menu/presintion/screen/docto_%20details/presentation/cubit/doctor_cubit.dart';
+import 'package:med_dos/features/home_menu/presintion/screen/docto_%20details/presentation/screen/doctor_menu.dart';
 import 'package:med_dos/features/home_menu/presintion/screen/search_screen.dart';
 
 import '../../../../core/widget/custom_text_form_field.dart';
@@ -35,22 +39,17 @@ class _MenuHomeScreenState extends State<MenuHomeScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              const Row(
+               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    'مرحبا , ',
+                    AppString.welcomeBack.tr(context),
                     style: TextStyle(fontSize: 25, color: Color(0xff063970)),
                   ),
-                  Text(
-                    'احمد الناصر ',
-                    style: TextStyle(
-                        fontSize: 25,
-                        color: Color(0xff063970),
-                        fontWeight: FontWeight.bold),
-                  ),
+
                 ],
               ),
+              SizedBox(height: 10,),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
@@ -136,7 +135,10 @@ class _MenuHomeScreenState extends State<MenuHomeScreen> {
                     return Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: InkWell(
-                        onTap: (){navigate(context: context, route: Routes.doctorMenu);},
+                        onTap: (){Navigator.push(context, MaterialPageRoute(builder: (_)=>
+                              DoctorMenu(sec:section[index].title),
+
+                          ));},
                         child: Container(
                           decoration: BoxDecoration(
                               color: const Color(0xff91BAEF).withOpacity(.2),
@@ -226,7 +228,7 @@ class _MenuHomeScreenState extends State<MenuHomeScreen> {
                   },
                 ),
               ),
-              Divider(thickness: 2, color: Colors.blue.shade50),
+            
             ],
           ),
         ),

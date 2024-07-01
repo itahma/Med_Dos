@@ -15,7 +15,7 @@ class GNavComponent extends StatelessWidget {
     return CurvedNavigationBar(
       index:BlocProvider.of<HomeCubit>(context).currentIndex,
 
-      backgroundColor: AppColors.primary,
+      backgroundColor:  AppColors.primary.withOpacity(.8),
 
       items: [
 

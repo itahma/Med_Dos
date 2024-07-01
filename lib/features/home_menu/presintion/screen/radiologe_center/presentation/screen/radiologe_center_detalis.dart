@@ -1,13 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:med_dos/core/database/api/end_points.dart';
 import 'package:med_dos/core/local/app_local.dart';
 import 'package:med_dos/core/utils/app_colors.dart';
 import 'package:med_dos/core/utils/app_string.dart';
+import 'package:med_dos/features/map/map.dart';
 import 'package:url_launcher/url_launcher.dart' as launcher;
 import '../../../../../../../core/widget/custom_cached_network_image.dart';
+import '../../data/model/radiologeModel.dart';
 
 class RadiologyCenterItemDetails extends StatelessWidget {
-  const RadiologyCenterItemDetails({Key? key}) : super(key: key);
+  RadiologyModel radiologyModel;
+
+  RadiologyCenterItemDetails({Key? key, required this.radiologyModel})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -30,10 +37,9 @@ class RadiologyCenterItemDetails extends StatelessWidget {
                   height: 150.h,
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(15),
-                    child: const CustomCachedNetworkImage(
+                    child: CustomCachedNetworkImage(
                       fit: BoxFit.cover,
-                      imageUrl:
-                      "https://th.bing.com/th/id/OIP.rzvJIIoK4rs7kpN44Q5YegHaE8?rs=1&pid=ImgDetMain",
+                      imageUrl: EndPoint.ImageUrl + radiologyModel.photo,
                     ),
                   ),
                 ),
@@ -42,7 +48,7 @@ class RadiologyCenterItemDetails extends StatelessWidget {
                 height: 25.h,
               ),
               Text(
-                "مركز ميد دوز (تجريبي)",
+                radiologyModel.name,
                 style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
@@ -72,7 +78,7 @@ class RadiologyCenterItemDetails extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.all(8.0),
                   child: Text(
-                    'الموقع:',
+                    'Location',
                     style: TextStyle(
                       color: AppColors.grey,
                       fontSize: 16,
@@ -80,25 +86,30 @@ class RadiologyCenterItemDetails extends StatelessWidget {
                     ),
                   ),
                 ),
-                Container(
-                    padding: EdgeInsets.all(13),
-                    width: double.infinity,
-                    margin: EdgeInsets.all(12),
-                    decoration: BoxDecoration(
-                        color: AppColors.primary.withOpacity(0.1),
-                        borderRadius: BorderRadius.circular(10)),
-                    child: Row(
-                      children: [
-                        Icon(
-                          Icons.location_pin,
-                          color: AppColors.primary,
-                        ),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        Text("دمشق, زاهرة, مركز الزاهرة الطبي")
-                      ],
-                    )),
+                InkWell(
+                  onTap: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (_)=>MapSample(position: radiologyModel.position)));
+                  },
+                  child: Container(
+                      padding: EdgeInsets.all(13),
+                      width: double.infinity,
+                      margin: EdgeInsets.all(12),
+                      decoration: BoxDecoration(
+                          color: AppColors.primary.withOpacity(0.1),
+                          borderRadius: BorderRadius.circular(10)),
+                      child: Row(
+                        children: [
+                          Icon(
+                            Icons.location_pin,
+                            color: AppColors.primary,
+                          ),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Text(radiologyModel.location.toString())
+                        ],
+                      )),
+                ),
               ]),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -106,7 +117,7 @@ class RadiologyCenterItemDetails extends StatelessWidget {
                   const Padding(
                     padding: EdgeInsets.all(8.0),
                     child: Text(
-                      'معلومات التواصل :',
+                      "Contract Info: ",
                       style: TextStyle(
                           color: AppColors.grey,
                           fontSize: 16,
@@ -117,7 +128,8 @@ class RadiologyCenterItemDetails extends StatelessWidget {
                     padding: const EdgeInsets.all(8),
                     child: InkWell(
                       onTap: () async {
-                        Uri uri = Uri.parse('tel:+963-962-694065');
+                        Uri uri =
+                            Uri.parse('tel:${radiologyModel.phoneNumber}');
                         if (!await launcher.launchUrl(uri)) {
                           debugPrint("Could not launch the uri ");
                         }
@@ -129,7 +141,7 @@ class RadiologyCenterItemDetails extends StatelessWidget {
                         ),
                         //Border.all
                         height: 55,
-                        child: const Padding(
+                        child: Padding(
                           padding: EdgeInsets.all(10),
                           child: Row(
                             children: [
@@ -141,7 +153,7 @@ class RadiologyCenterItemDetails extends StatelessWidget {
                               SizedBox(
                                 width: 18,
                               ),
-                              Text('+963-962-694065 ',
+                              Text(radiologyModel.phoneNumber,
                                   style: TextStyle(
                                       color: AppColors.grey, fontSize: 18))
                             ],
@@ -158,7 +170,7 @@ class RadiologyCenterItemDetails extends StatelessWidget {
                   const Padding(
                     padding: EdgeInsets.all(8.0),
                     child: Text(
-                      'اوقات الدوام :',
+                      "Time of Work: ",
                       style: TextStyle(
                           color: AppColors.grey,
                           fontSize: 16,
@@ -176,13 +188,16 @@ class RadiologyCenterItemDetails extends StatelessWidget {
                               borderRadius: BorderRadius.circular(15),
                             ),
                             height: 65,
-                            child: const Padding(
+                            child: Padding(
                               padding: EdgeInsets.all(8),
-                              child: Text('من السبت الى الخميس  ',
-                                  style: TextStyle(
-                                    color: AppColors.black,
-                                    fontSize: 15,
-                                  )),
+                              child: Center(
+                                child: Text(
+                                    radiologyModel.firstDay,
+                                    style: TextStyle(
+                                      color: AppColors.black,
+                                      fontSize: 15,
+                                    )),
+                              ),
                             ),
                           ),
                         ),
@@ -196,13 +211,66 @@ class RadiologyCenterItemDetails extends StatelessWidget {
                               borderRadius: BorderRadius.circular(15),
                             ),
                             height: 65,
-                            child: const Padding(
+                            child: Padding(
                               padding: EdgeInsets.all(8),
-                              child: Text('من الساعة التاسعة صباحا الى الخامسة مساء',
-                                  style: TextStyle(
-                                    color: AppColors.black,
-                                    fontSize: 15,
-                                  )),
+                              child: Center(
+                                child: Text(
+    radiologyModel.lastDay ,
+                                    style: TextStyle(
+                                      color: AppColors.black,
+                                      fontSize: 15,
+                                    )),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.all(8),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: const Color(0xff91BAEF).withOpacity(.2),
+                              borderRadius: BorderRadius.circular(15),
+                            ),
+                            height: 65,
+                            child: Padding(
+                              padding: EdgeInsets.all(8),
+                              child: Center(
+                                child: Text(
+                                    radiologyModel.startWorking,
+                                    style: TextStyle(
+                                      color: AppColors.black,
+                                      fontSize: 15,
+                                    )),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.all(8),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: const Color(0xff91BAEF).withOpacity(.2),
+                              borderRadius: BorderRadius.circular(15),
+                            ),
+                            height: 65,
+                            child: Padding(
+                              padding: EdgeInsets.all(8),
+                              child: Center(
+                                child: Text(
+                                    radiologyModel.endWorking ,
+                                    style: TextStyle(
+                                      color: AppColors.black,
+                                      fontSize: 15,
+                                    )),
+                              ),
                             ),
                           ),
                         ),
@@ -211,8 +279,43 @@ class RadiologyCenterItemDetails extends StatelessWidget {
                   ),
                 ],
               ),
+              Divider(),
+              SizedBox(height: 20,),
+              Text("Radiology Types:"),
+              SizedBox(height: 10,),
+              SizedBox(
+                height: 200,
+                child: GridView.builder(
+                  padding: const EdgeInsets.all(6),
+                  gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                    maxCrossAxisExtent: 250,
+                    childAspectRatio: 3 / 2,
+                    crossAxisSpacing: 15,
+                    mainAxisSpacing: 15,
+                    mainAxisExtent: 75,
+                  ),
+                  physics: const BouncingScrollPhysics(),
+                  itemCount: radiologyModel.radiologyTypes.length,
+                  itemBuilder: (context, index) {
+
+                  return  Container(
+                      decoration: BoxDecoration(
+                          color: AppColors.primary.withOpacity(.8),
+                          borderRadius: BorderRadius.circular(15)),
+                      alignment: Alignment.center,
+                      child: Center(
+                        child: Text(radiologyModel.radiologyTypes[index],
+                                overflow: TextOverflow.ellipsis,
+                                style: const TextStyle(
+                                  color: AppColors.white,
+                                )),
+                      ),
 
 
+                    );
+                  },
+                ),
+              ),
             ],
           ),
         ),

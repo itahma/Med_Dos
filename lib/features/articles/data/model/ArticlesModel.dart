@@ -1,21 +1,28 @@
 class ArticlesModel {
   final String title;
-  final String contant;
+  final String text;
   final String doctorName;
-  final String photo;
+  final String ?doctorProfile;
+  final String doctorId;
+  final String? photo;
 
   ArticlesModel({
     required this.title,
-    required this.contant,
+    required this.text,
     required this.doctorName,
     required this.photo,
+    required this.doctorProfile,required this.doctorId
   });
 
   factory ArticlesModel.fromJson(json) {
     return ArticlesModel(
         title: json['title'],
-        contant: json['contant'],
-        doctorName: json['doctor_name'],
-        photo: json["photo"]);
+        text: json['text'],
+        doctorName: json['from']['First_Name']+" "+json['from']['Last_Name'],
+        photo: json['photo'],
+      doctorProfile:json['from']['profile'] ,
+      doctorId: json['from']["_id"]
+
+    );
   }
 }

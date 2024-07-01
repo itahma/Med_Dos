@@ -3,12 +3,13 @@ abstract class ApiConsumer {
       String path, {
         Object? data,
         Map<String, dynamic>? queryParameters,
+        String ?token
       });
   Future<dynamic> post(
       String path, {
         Object? data,
         Map<String, dynamic>? queryParameters,
-     //   String ?token
+        String ?token
       });
   Future<dynamic> patch(
       String path, {

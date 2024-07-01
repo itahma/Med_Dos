@@ -1,4 +1,3 @@
-import 'package:date_picker_plus/date_picker_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -7,10 +6,8 @@ import 'package:med_dos/core/local/app_local.dart';
 import 'package:med_dos/core/utils/app_assets.dart';
 import 'package:med_dos/core/utils/app_colors.dart';
 import 'package:med_dos/core/utils/commons.dart';
-import 'package:med_dos/features/auth/presentation/cubit/register_send_code/redister_send_code_cubit.dart';
 import 'package:med_dos/features/auth/presentation/cubit/registr_cubit/register_cubit.dart';
 import 'package:med_dos/features/auth/presentation/cubit/registr_cubit/register_state.dart';
-
 import '../../../../core/routes/app_routes.dart';
 import '../../../../core/utils/app_string.dart';
 import '../../../../core/widget/custom_text_form_field.dart';
@@ -225,7 +222,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 children: [
                                   Radio(
                                       activeColor: AppColors.primary,
-                                      value: 'Male',
+                                      value: 'male',
                                       //BlocProvider.of<RegisterCubit>(context).maleController.text,
                                       groupValue:
                                           BlocProvider.of<RegisterCubit>(
@@ -243,8 +240,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 children: [
                                   Radio(
                                       activeColor: AppColors.primary,
-                                      value: 'Female',
-                                      //BlocProvider.of<RegisterCubit>(context).femaleController.text,
+                                      value: 'female',
                                       groupValue:
                                           BlocProvider.of<RegisterCubit>(
                                                   context)

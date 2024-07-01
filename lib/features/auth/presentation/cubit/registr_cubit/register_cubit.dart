@@ -6,7 +6,6 @@ import 'package:med_dos/core/database/cache/cache_helper.dart';
 import 'package:med_dos/core/service/service_locatro.dart';
 import 'package:med_dos/features/auth/data/models/register_model.dart';
 import 'package:med_dos/features/auth/data/repository/auth_repository.dart';
-import 'package:med_dos/features/auth/presentation/cubit/register_send_code/redister_send_code_state.dart';
 import 'register_state.dart';
 
 class RegisterCubit extends Cubit<RegisterState> {

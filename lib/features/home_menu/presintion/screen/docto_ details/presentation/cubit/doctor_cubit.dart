@@ -16,22 +16,18 @@ class DoctorCubit extends Cubit<DoctorState> {
   }
   bool isLike=false;
   Like() {
-    isLike = !isLike!;
-    emit(LikeDoctorState());
+    isLike = !isLike;
+
 
   }
 
-  void getDoctorList(id) async {
-    emit(LoadingDoctorList());
-    final result = await doctorRepository.getDoctorInSpecialist(id);
-    result.fold((l) => emit(ErrorDoctorList(l.toString())), (r) {
-      emit(LoadedDoctorList(r));
+
+  void getDoctorInfo(id) async {
+    emit(LoadingDoctorInfo());
+    final result = await doctorRepository.getDoctorInfo(id);
+    result.fold((l) => emit(ErrorDoctorInfo(l.toString())), (r) {
+      emit(LoadedDoctorInfo(r));
     });
   }
-  void bookAppointment(int doctorID,String date) async {
-    final result = await doctorRepository.bookAppointment(doctorID,date);
-    result.fold((l) => emit(ErrorBookAppointment(l)), (r) {
-      emit(SuccessBookAppointment(r));
-    });
-  }
+
 }

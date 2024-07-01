@@ -147,7 +147,10 @@ class _SettingScreenState extends State<SettingScreen> {
                 Padding(
                   padding: const EdgeInsets.all(10),
                   child: InkWell(
-                    onTap: (){},
+                    onTap: ()async{
+                      await sl<CacheHelper>().clearData();
+                      navigate(context: context, route: Routes.login);
+                    },
                     child: Container(
                       decoration: BoxDecoration(
                         border: Border.all(color: Colors.red),
