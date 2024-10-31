@@ -4,14 +4,30 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:med_dos/core/local/app_local.dart';
 import 'package:med_dos/core/utils/app_colors.dart';
+import 'package:med_dos/core/utils/app_string.dart';
 import 'package:med_dos/core/utils/commons.dart';
-import 'package:med_dos/features/home_menu/presintion/screen/healthCenters_detalis/presentation/component/healthCenters_item_component.dart';
-import 'package:med_dos/features/home_menu/presintion/screen/healthCenters_detalis/presentation/cubit/health_center_cubit.dart';
+import 'package:med_dos/features/home_menu/presintion/screen/docto_%20details/presentation/cubit/doctor_cubit.dart';
+import 'package:med_dos/features/home_menu/presintion/screen/docto_%20details/presentation/cubit/doctors_list/doctor_list_cubit.dart';
+import 'package:med_dos/features/home_menu/presintion/screen/healthCenters_detalis/presentation/cubit/doctor_center_cubit/doctor_center_cubit.dart';
+import 'package:med_dos/features/home_menu/presintion/screen/healthCenters_detalis/presentation/screens/doctors/component/doctor_item_component.dart';
 
-import '../../../../../../../core/utils/app_string.dart';
+class DoctorCenterMenu extends StatefulWidget {
+  String sec;
+  String id;
 
-class HealthCentersMenu extends StatelessWidget {
-  const HealthCentersMenu({Key? key}) : super(key: key);
+  DoctorCenterMenu({Key? key, required this.sec, required this.id}) : super(key: key);
+
+  @override
+  State<DoctorCenterMenu> createState() => _DoctorMenuState();
+}
+
+class _DoctorMenuState extends State<DoctorCenterMenu> {
+  @override
+  void initState() {
+    BlocProvider.of<DoctorCenterCubit>(context)
+        .getDoctorList(widget.sec, widget.id);
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -24,14 +40,14 @@ class HealthCentersMenu extends StatelessWidget {
             ),
             elevation: 0,
           ),
-          body: BlocConsumer<HealthCenterCubit, HealthCenterState>(
-            listener: (context, state) {
-              if (state is ErrorHealthCenter) {
+          body: BlocConsumer<DoctorCenterCubit, DoctorCenterState>(
+            listener: (_, state) {
+              if (state is ErrorDoctorCenter) {
                 showToast(message: state.error, state: ToastState.error);
               }
             },
-            builder: (context, state) {
-              if (state is LoadingHealthCenter) {
+            builder: (_, state) {
+              if (state is LoadingDoctorCenter) {
                 return Container(
                   child: Center(
                     child: SpinKitFadingCircle(
@@ -39,8 +55,7 @@ class HealthCentersMenu extends StatelessWidget {
                     ),
                   ),
                 );
-              }
-              if (state is LoadedHealthCenter) {
+              } else if (state is LoadedDoctorCenter) {
                 return Padding(
                   padding: const EdgeInsets.all(8),
                   child: Column(
@@ -51,7 +66,7 @@ class HealthCentersMenu extends StatelessWidget {
                             padding: const EdgeInsets.all(15),
                             child: Center(
                               child: Text(
-                                AppString.healthCenters.tr(context),
+                                AppString.specialization.tr(context),
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 18,
@@ -80,19 +95,23 @@ class HealthCentersMenu extends StatelessWidget {
                       ),
                       Expanded(
                         child: ListView.builder(
-                          itemCount: state.healthcenter.length,
+                          itemCount: state.doctorshealthcenter.length,
                           itemBuilder: (context, index) => Padding(
                               padding: EdgeInsets.all(8),
-                              child: HealthCentersItemComponent(
-                                healthCenterModel: state.healthcenter[index],
+                              child: DoctorCenterItemComponent(
+                                doctorModel: state.doctorshealthcenter[index],
                               )),
                         ),
                       ),
                     ],
                   ),
                 );
-              }
-              return Container();
+              } else if (state is ErrorDoctorList) {
+                return Container(
+                  child: Center(child: Text("Not Found Doctor")),
+                );
+              } else
+                return Container();
             },
           )),
     );

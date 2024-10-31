@@ -22,6 +22,7 @@ class DoctorRepository {
     }
   }
 
+
   Future<Either<String, List>> getTimeDay(String id, String date) async {
     try {
       final response = await sl<ApiConsumer>().get(

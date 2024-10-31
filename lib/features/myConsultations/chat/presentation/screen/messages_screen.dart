@@ -8,6 +8,9 @@ import 'package:med_dos/core/utils/commons.dart';
 import 'package:med_dos/features/myConsultations/chat/data/model/message.dart';
 import 'package:med_dos/features/myConsultations/chat/presentation/messages_Cubit/messages_cubit.dart';
 import 'package:med_dos/features/myConsultations/data/model/Consultation.dart';
+import 'package:med_dos/features/myConsultations/presentation/screen/medicalConsultation_screen.dart';
+// import 'package:webview_flutter/webview_flutter.dart';
+// import 'package:photo_view/photo_view.dart';
 
 class MessagesScreen extends StatefulWidget {
   final Consultations s;
@@ -30,17 +33,16 @@ class _MessagesScreenState extends State<MessagesScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          leading: CircleAvatar(
-            backgroundImage: NetworkImage(EndPoint.ImageUrl + widget.s.photo),
-          ),
-          title: Text(widget.s.firstName + " " + widget.s.lastName),
-        ),
-        body: BlocConsumer<MessagesCubit, MessagesState>(listener: (_, state) {
+      appBar: AppBar(
+        title: Text(widget.s.firstName + " " + widget.s.lastName),
+      ),
+      body: BlocConsumer<MessagesCubit, MessagesState>(
+        listener: (_, state) {
           if (state is ErrorMessages) {
             showToast(message: state.error, state: ToastState.error);
           }
-        }, builder: (_, state) {
+        },
+        builder: (_, state) {
           if (state is LoadingMessages) {
             return Container(
               child: Center(
@@ -61,12 +63,18 @@ class _MessagesScreenState extends State<MessagesScreen> {
                     },
                   ),
                 ),
-                _buildMessageInput(),
               ],
             );
           }
           return Container();
-        }));
+        },
+      ),
+      floatingActionButton: FloatingActionButton(onPressed: (){
+        Navigator.push(context, MaterialPageRoute(builder: (_)=>MedicalConsultation(id: widget.s.id))).then((value) =>
+            BlocProvider.of<MessagesCubit>(context).getMessages(widget.s.id)
+        );
+      },child: Icon(Icons.send),),
+    );
   }
 
   Widget _buildMessage(Message message) {
@@ -76,52 +84,65 @@ class _MessagesScreenState extends State<MessagesScreen> {
         alignment: message.isMe ? Alignment.centerRight : Alignment.centerLeft,
         child: Column(
           crossAxisAlignment:
-              message.isMe ? CrossAxisAlignment.end : CrossAxisAlignment.start,
+          message.isMe ? CrossAxisAlignment.end : CrossAxisAlignment.start,
           children: [
             Container(
               width: 250,
-              //  padding: EdgeInsets.all(16.0),
-                decoration: BoxDecoration(
-                  color: message.isMe ? Colors.blueAccent : Colors.grey[300],
-                  borderRadius: BorderRadius.circular(12.0),
-                ),
-                child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                  message.message != null
-                      ? Text(
-                          message.message!,
-                          style: TextStyle(
-                            color: message.isMe ? Colors.white : Colors.black,
-                          ),
-                        )
-                      : Container(),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  message.image != ""
-                      ? Container(
-                    height: 200,
+              padding: EdgeInsets.all(16.0),
+              decoration: BoxDecoration(
+                color: message.isMe ? AppColors.primary : Colors.grey[300],
+                borderRadius: BorderRadius.circular(12.0),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  if (message.message != null)
+                    Text(
+                      message.message!,
+                      style: TextStyle(
+                        color: message.isMe ? Colors.white : Colors.black,
+                      ),
+                    ),
+                  SizedBox(height: 10),
+                  if (message.image != "")
+                    GestureDetector(
+                      onTap: (){},
+                      child: Container(
+                        height: 200,
                         width: double.infinity,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(12.0),
-                          image: DecorationImage(image: NetworkImage(EndPoint.ImageUrl+message.image!,),fit: BoxFit.fill)
+                          image: DecorationImage(
+                            image: NetworkImage(
+                              EndPoint.ImageUrl + message.image!,
+                            ),
+                            fit: BoxFit.cover,
+                          ),
                         ),
-
-                      )
-                      : Container(),
-                      message.pdf!=""?Row(
+                      ),
+                    ),
+                  if (message.pdf != "")
+                    GestureDetector(
+                     // onTap: () => _showPDF(EndPoint.ImageUrl + message.pdf!),
+                      child: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          Icon(Icons.picture_as_pdf, color: message.isMe ? Colors.white : Colors.red),
+                          Icon(Icons.picture_as_pdf,
+                              color: message.isMe ? Colors.white : Colors.red),
                           SizedBox(width: 8),
                           Text(
-                            'PDF Document',
-                            style: TextStyle(color: message.isMe ? Colors.white : Colors.black),
+                            'View PDF',
+                            style: TextStyle(
+                              color: message.isMe ? Colors.white : Colors.black,
+                              decoration: TextDecoration.underline,
+                            ),
                           ),
                         ],
-                      ):Container()
-                ])),
+                      ),
+                    ),
+                ],
+              ),
+            ),
             SizedBox(height: 4.0),
             Text(
               DateFormat('h:mm a').format(DateTime.parse(message.createdAt)),
@@ -133,28 +154,54 @@ class _MessagesScreenState extends State<MessagesScreen> {
     );
   }
 
-  Widget _buildMessageInput() {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Row(
-        children: [
-          Expanded(
-            child: TextField(
-              controller: _controller,
-              decoration: InputDecoration(
-                hintText: 'Type a message',
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(12.0),
-                ),
-              ),
-            ),
-          ),
-          IconButton(
-            icon: Icon(Icons.send),
-            onPressed: () {},
-          ),
-        ],
-      ),
-    );
-  }
+//   void _showPDF(String pdfUrl) {
+//     Navigator.push(
+//       context,
+//       MaterialPageRoute(
+//         builder: (context) => PDFViewerScreen(pdfUrl: pdfUrl),
+//       ),
+//     );
+//   }
+// }
+//
+// class PDFViewerScreen extends StatefulWidget {
+//   final String pdfUrl;
+//
+//   PDFViewerScreen({required this.pdfUrl});
+//
+//   @override
+//   _PDFViewerScreenState createState() => _PDFViewerScreenState();
+// }
+//
+// class _PDFViewerScreenState extends State<PDFViewerScreen> {
+//   late final WebViewController controller;
+//
+//   @override
+//   void initState() {
+//     super.initState();
+//    // controller = WebViewController()
+//      // ..setJavaScriptMode(JavaScriptMode.unrestricted)
+//       ..setBackgroundColor(const Color(0x00000000))
+//       ..setNavigationDelegate(
+//       //  NavigationDelegate(
+//           onProgress: (int progress) {
+//             // Update loading bar.
+//           },
+//           onPageStarted: (String url) {},
+//           onPageFinished: (String url) {},
+//        //   onWebResourceError: (WebResourceError error) {},
+//         ),
+//       )
+//       ..loadRequest(Uri.parse('https://docs.google.com/gview?embedded=true&url=${widget.pdfUrl}'));
+//   }
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: Text('عارض PDF'),
+//       ),
+//      // body: WebViewWidget(controller: controller),
+//     );
+//   }
 }

@@ -9,14 +9,14 @@ class HealthCenterCubit extends Cubit<HealthCenterState> {
   HealthCenterCubit(this.healthCenterRepository) : super(HealthCenterInitial());
   final HealthCenterRepository healthCenterRepository;
 
-
-
-
-  void getDoctorList(id) async {
+  void getAllHealthCenter() async {
     emit(LoadingHealthCenter());
     final result = await healthCenterRepository.getAllHealthCenter();
     result.fold((l) => emit(ErrorHealthCenter(l.toString())), (r) {
       emit(LoadedHealthCenter(r));
     });
   }
+
+
+
 }

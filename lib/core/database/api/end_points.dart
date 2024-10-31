@@ -29,9 +29,10 @@ class EndPoint {
   static const String getAllArticle = 'user/showallPost';
   static const String getArticleInfo = 'getArticleInfo';
   ////////////////////////search///////////////////////////////////////
-  static const String searchAdoctor = 'searchAdoctor';
+  static const String searchAdoctor = 'User/searchDoctors';
   ///////////////////////////Health Center////////////////////////////
-  static const String getAllHealthCenter= 'getAllArticle';
+  static const String getAllHealthCenter= 'user/showallCenter';
+  static const String getDoctorInHealthCenter= 'user/healthCenterDoctors';
   static const String getHealthCenterInfo = 'getArticleInfo';
   ///////////////////////////Laboratories/////////////////////////////
   static const String getAllRadioCenter = 'user/showallRadiologyLab';

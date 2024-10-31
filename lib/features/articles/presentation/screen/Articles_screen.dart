@@ -85,7 +85,7 @@ class ArticlesScreen extends StatelessWidget {
                             padding: const EdgeInsets.all(10.0),
                             child: Text(
                               ar[i].title.toString(),
-                              style: TextStyle(fontSize: 15,color: Colors.grey),
+                              style: TextStyle(fontSize: 20,fontWeight: FontWeight.w500,),
                               overflow: TextOverflow.ellipsis,
                             ),
                           ),

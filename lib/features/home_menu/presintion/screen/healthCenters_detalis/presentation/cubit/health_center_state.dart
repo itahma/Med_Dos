@@ -8,7 +8,7 @@ final class HealthCenterInitial extends HealthCenterState {}
 final class LoadingHealthCenter extends HealthCenterState {}
 
 final class LoadedHealthCenter extends HealthCenterState {
-  List<HealthCenterModel> healthcenter;
+  List healthcenter;
   LoadedHealthCenter(this.healthcenter);
 }
 

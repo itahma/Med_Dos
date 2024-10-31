@@ -9,10 +9,13 @@ import 'package:med_dos/features/auth/presentation/cubit/register_send_code/redi
 import 'package:med_dos/features/auth/presentation/cubit/registr_cubit/register_cubit.dart';
 import 'package:med_dos/features/booking/presentation/cubit/booking_cubit.dart';
 import 'package:med_dos/features/home/presentation/cubit/home_cubit.dart';
+import 'package:med_dos/features/home_menu/presintion/cubit/search_cubit.dart';
 import 'package:med_dos/features/home_menu/presintion/screen/docto_%20details/presentation/cubit/book_appointment/book_appointment_cubit.dart';
 import 'package:med_dos/features/home_menu/presintion/screen/docto_%20details/presentation/cubit/book_soon_appointment/book_soon_appointment_cubit.dart';
 import 'package:med_dos/features/home_menu/presintion/screen/docto_%20details/presentation/cubit/doctor_cubit.dart';
 import 'package:med_dos/features/home_menu/presintion/screen/docto_%20details/presentation/cubit/doctors_list/doctor_list_cubit.dart';
+import 'package:med_dos/features/home_menu/presintion/screen/healthCenters_detalis/presentation/cubit/doctor_center_cubit/doctor_center_cubit.dart';
+import 'package:med_dos/features/home_menu/presintion/screen/healthCenters_detalis/presentation/cubit/health_center_cubit.dart';
 import 'package:med_dos/features/home_menu/presintion/screen/radiologe_center/presentation/cubit/radio_center_cubit.dart';
 import 'package:med_dos/features/myConsultations/chat/presentation/messages_Cubit/messages_cubit.dart';
 import 'package:med_dos/features/myConsultations/presentation/Consultions_Cubit/consulation_cubit.dart';
@@ -80,6 +83,15 @@ void main() async {
           ),
           BlocProvider(
             create: (context) => sl<MessagesCubit>(),
+          ),
+          BlocProvider(
+            create: (context) => sl<HealthCenterCubit>()..getAllHealthCenter(),
+          ),
+          BlocProvider(
+            create: (context) => sl<DoctorCenterCubit>(),
+          ),
+          BlocProvider(
+            create: (context) => sl<SearchCubit>(),
           ),
         ],
         child: MyApp(),

@@ -17,12 +17,15 @@ import 'package:med_dos/features/booking/presentation/cubit/booking_cubit.dart';
 import 'package:med_dos/features/home/data/repository/home_repository.dart';
 
 import 'package:med_dos/features/home/presentation/cubit/home_cubit.dart';
+import 'package:med_dos/features/home_menu/data/search_repository/search_repository.dart';
+import 'package:med_dos/features/home_menu/presintion/cubit/search_cubit.dart';
 import 'package:med_dos/features/home_menu/presintion/screen/docto_%20details/data/repostory/Doctor_repository.dart';
 import 'package:med_dos/features/home_menu/presintion/screen/docto_%20details/presentation/cubit/book_appointment/book_appointment_cubit.dart';
 import 'package:med_dos/features/home_menu/presintion/screen/docto_%20details/presentation/cubit/book_soon_appointment/book_soon_appointment_cubit.dart';
 import 'package:med_dos/features/home_menu/presintion/screen/docto_%20details/presentation/cubit/doctor_cubit.dart';
 import 'package:med_dos/features/home_menu/presintion/screen/docto_%20details/presentation/cubit/doctors_list/doctor_list_cubit.dart';
 import 'package:med_dos/features/home_menu/presintion/screen/healthCenters_detalis/data/repository/HealthCenterRepository.dart';
+import 'package:med_dos/features/home_menu/presintion/screen/healthCenters_detalis/presentation/cubit/doctor_center_cubit/doctor_center_cubit.dart';
 import 'package:med_dos/features/home_menu/presintion/screen/healthCenters_detalis/presentation/cubit/health_center_cubit.dart';
 import 'package:med_dos/features/home_menu/presintion/screen/radiologe_center/data/radio_center_repository/radio_center_repository.dart';
 import 'package:med_dos/features/home_menu/presintion/screen/radiologe_center/presentation/cubit/radio_center_cubit.dart';
@@ -38,6 +41,15 @@ final sl = GetIt.instance;
 void initServiceLocator() {
   sl.registerLazySingleton(
     () => GlobalCubit(),
+  );
+  sl.registerLazySingleton(
+        () => DoctorCenterCubit(sl()),
+  );
+  sl.registerLazySingleton(
+        () => SearchCubit(sl()),
+  );
+  sl.registerLazySingleton(
+        () => SearchRepository(),
   );
   sl.registerLazySingleton(
         () => MessagesRepository(),

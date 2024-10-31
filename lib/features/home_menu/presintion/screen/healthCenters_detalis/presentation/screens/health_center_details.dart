@@ -1,13 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:med_dos/core/database/api/end_points.dart';
 import 'package:med_dos/core/local/app_local.dart';
 import 'package:med_dos/core/utils/app_colors.dart';
 import 'package:med_dos/core/utils/app_string.dart';
+import 'package:med_dos/features/home_menu/data/model/home_menu_model.dart';
+import 'package:med_dos/features/home_menu/presintion/screen/docto_%20details/presentation/screen/doctor_menu.dart';
+import 'package:med_dos/features/home_menu/presintion/screen/healthCenters_detalis/data/Model/HealthCenterModel.dart';
+import 'package:med_dos/features/home_menu/presintion/screen/healthCenters_detalis/presentation/screens/doctors/doctor_menu.dart';
+import 'package:med_dos/features/map/map.dart';
 import 'package:url_launcher/url_launcher.dart' as launcher;
 import '../../../../../../../core/widget/custom_cached_network_image.dart';
 
 class HealthCenterDetails extends StatelessWidget {
-  const HealthCenterDetails({Key? key}) : super(key: key);
+  HealthCenterModel healthCenterModel;
+
+  HealthCenterDetails({Key? key, required this.healthCenterModel})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -30,10 +40,9 @@ class HealthCenterDetails extends StatelessWidget {
                   height: 150.h,
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(15),
-                    child: const CustomCachedNetworkImage(
+                    child: CustomCachedNetworkImage(
                       fit: BoxFit.cover,
-                      imageUrl:
-                          "https://th.bing.com/th/id/OIP.rzvJIIoK4rs7kpN44Q5YegHaE8?rs=1&pid=ImgDetMain",
+                      imageUrl: EndPoint.ImageUrl + healthCenterModel.photo,
                     ),
                   ),
                 ),
@@ -42,7 +51,7 @@ class HealthCenterDetails extends StatelessWidget {
                 height: 25.h,
               ),
               Text(
-                "مركز ميد دوز الطبي (تجريبي)",
+                healthCenterModel.name,
                 style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
@@ -72,7 +81,7 @@ class HealthCenterDetails extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.all(8.0),
                   child: Text(
-                    'الموقع:',
+                    "Location :",
                     style: TextStyle(
                       color: AppColors.grey,
                       fontSize: 16,
@@ -80,25 +89,34 @@ class HealthCenterDetails extends StatelessWidget {
                     ),
                   ),
                 ),
-                Container(
-                    padding: EdgeInsets.all(13),
-                    width: double.infinity,
-                    margin: EdgeInsets.all(12),
-                    decoration: BoxDecoration(
-                        color: AppColors.primary.withOpacity(0.1),
-                        borderRadius: BorderRadius.circular(10)),
-                    child: Row(
-                      children: [
-                        Icon(
-                          Icons.location_pin,
-                          color: AppColors.primary,
-                        ),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        Text("دمشق, زاهرة, مركز الزاهرة الطبي")
-                      ],
-                    )),
+                InkWell(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (_) => MapSample(
+                                position: healthCenterModel.position)));
+                  },
+                  child: Container(
+                      padding: EdgeInsets.all(13),
+                      width: double.infinity,
+                      margin: EdgeInsets.all(12),
+                      decoration: BoxDecoration(
+                          color: AppColors.primary.withOpacity(0.1),
+                          borderRadius: BorderRadius.circular(10)),
+                      child: Row(
+                        children: [
+                          Icon(
+                            Icons.location_pin,
+                            color: AppColors.primary,
+                          ),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Text(healthCenterModel.location)
+                        ],
+                      )),
+                ),
               ]),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -106,7 +124,7 @@ class HealthCenterDetails extends StatelessWidget {
                   const Padding(
                     padding: EdgeInsets.all(8.0),
                     child: Text(
-                      'معلومات التواصل :',
+                      'Contract Info:',
                       style: TextStyle(
                           color: AppColors.grey,
                           fontSize: 16,
@@ -117,7 +135,7 @@ class HealthCenterDetails extends StatelessWidget {
                     padding: const EdgeInsets.all(8),
                     child: InkWell(
                       onTap: () async {
-                        Uri uri = Uri.parse('tel:+963-962-694065');
+                        Uri uri = Uri.parse('tel:+${healthCenterModel.phone}');
                         if (!await launcher.launchUrl(uri)) {
                           debugPrint("Could not launch the uri ");
                         }
@@ -129,7 +147,7 @@ class HealthCenterDetails extends StatelessWidget {
                         ),
                         //Border.all
                         height: 55,
-                        child: const Padding(
+                        child: Padding(
                           padding: EdgeInsets.all(10),
                           child: Row(
                             children: [
@@ -141,7 +159,7 @@ class HealthCenterDetails extends StatelessWidget {
                               SizedBox(
                                 width: 18,
                               ),
-                              Text('+963-962-694065 ',
+                              Text(healthCenterModel.phone,
                                   style: TextStyle(
                                       color: AppColors.grey, fontSize: 18))
                             ],
@@ -152,64 +170,69 @@ class HealthCenterDetails extends StatelessWidget {
                   ),
                 ],
               ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Text(
-                      'اوقات دوام المركز:',
-                      style: TextStyle(
-                          color: AppColors.grey,
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold),
-                    ),
-                  ),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: Padding(
-                          padding: const EdgeInsets.all(8),
-                          child: Container(
-                            decoration: BoxDecoration(
+              Divider(),
+              SizedBox(
+                height: 10,
+              ),
+              Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    "   Sections :",
+                    style: TextStyle(
+                        fontSize: 19,
+                        color: Colors.grey,
+                        fontWeight: FontWeight.w500),
+                  )),
+              SizedBox(
+                height: 100,
+                // Provide a height constraint
+                child: ListView.builder(
+                  physics: const BouncingScrollPhysics(),
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (_) => DoctorCenterMenu(
+                                  sec: section[index].title,
+                                  id: healthCenterModel.id,
+                                ),
+                              ));
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(
                               color: const Color(0xff91BAEF).withOpacity(.2),
-                              borderRadius: BorderRadius.circular(15),
-                            ),
-                            height: 65,
-                            child: const Padding(
-                              padding: EdgeInsets.all(8),
-                              child: Text('من السبت الى الخميس  ',
-                                  style: TextStyle(
-                                    color: AppColors.black,
-                                    fontSize: 15,
-                                  )),
-                            ),
+                              borderRadius: BorderRadius.circular(15)),
+                          width: 80,
+                          child: Column(
+                            children: [
+                              const SizedBox(
+                                height: 10,
+                              ),
+                              SvgPicture.asset(
+                                height: 40.0.h,
+                                width: 40.0.w,
+                                allowDrawingOutsideViewBox: true,
+                                section[index].icon,
+                                color: AppColors.primary,
+                                matchTextDirection: true,
+                              ),
+                              Text(
+                                section[index].title.tr(context),
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ],
                           ),
                         ),
                       ),
-                      Expanded(
-                        child: Padding(
-                          padding: const EdgeInsets.all(8),
-                          child: Container(
-                            decoration: BoxDecoration(
-                              color: const Color(0xff91BAEF).withOpacity(.2),
-                              borderRadius: BorderRadius.circular(15),
-                            ),
-                            height: 65,
-                            child: const Padding(
-                              padding: EdgeInsets.all(8),
-                              child: Text('من الساعة التاسعة صباحا الى الخامسة مساء',
-                                  style: TextStyle(
-                                    color: AppColors.black,
-                                    fontSize: 15,
-                                  )),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
+                    );
+                  },
+                  itemCount: section.length,
+                  scrollDirection: Axis.horizontal,
+                ),
               ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -217,104 +240,50 @@ class HealthCenterDetails extends StatelessWidget {
                   const Padding(
                     padding: EdgeInsets.all(8.0),
                     child: Text(
-                      'الخدمات التي يقدمها المركز :',
+                      'Available Devices',
                       style: TextStyle(
                           color: AppColors.grey,
                           fontSize: 16,
                           fontWeight: FontWeight.bold),
                     ),
                   ),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: Padding(
-                          padding: const EdgeInsets.all(8),
-                          child: Container(
-                            decoration: BoxDecoration(
-                              color: const Color(0xff91BAEF).withOpacity(.2),
-                              borderRadius: BorderRadius.circular(15),
-                            ),
-                            height: 50,
-                            child: const Padding(
-                              padding: EdgeInsets.all(8),
-                              child: Text('تحاليل طبية  ',
-                                  style: TextStyle(
-                                    color: AppColors.black,
-                                    fontSize: 15,
-                                  )),
-                            ),
-                          ),
-                        ),
-                      ),
-                      Expanded(
-                        child: Padding(
-                          padding: const EdgeInsets.all(8),
-                          child: Container(
-                            decoration: BoxDecoration(
-                              color: const Color(0xff91BAEF).withOpacity(.2),
-                              borderRadius: BorderRadius.circular(15),
-                            ),
-                            height: 50,
-                            child: const Padding(
-                              padding: EdgeInsets.all(8),
-                              child: Text('اسعافات اولية ',
-                                  style: TextStyle(
-                                    color: AppColors.black,
-                                    fontSize: 15,
-                                  )),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
+                  SizedBox(
+                    height: 10,
                   ),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: Padding(
-                          padding: const EdgeInsets.all(8),
-                          child: Container(
-                            decoration: BoxDecoration(
-                              color: const Color(0xff91BAEF).withOpacity(.2),
-                              borderRadius: BorderRadius.circular(15),
-                            ),
-                            height: 50,
-                            child: const Padding(
-                              padding: EdgeInsets.all(8),
-                              child: Text('معاينة  ',
-                                  style: TextStyle(
-                                    color: AppColors.black,
-                                    fontSize: 15,
-                                  )),
-                            ),
-                          ),
-                        ),
+                  SizedBox(
+                    height: 200,
+                    child: GridView.builder(
+                      padding: const EdgeInsets.all(6),
+                      gridDelegate:
+                          const SliverGridDelegateWithMaxCrossAxisExtent(
+                        maxCrossAxisExtent: 250,
+                        childAspectRatio: 3 / 2,
+                        crossAxisSpacing: 15,
+                        mainAxisSpacing: 15,
+                        mainAxisExtent: 75,
                       ),
-                      Expanded(
-                        child: Padding(
-                          padding: const EdgeInsets.all(8),
-                          child: Container(
-                            decoration: BoxDecoration(
-                              color: const Color(0xff91BAEF).withOpacity(.2),
-                              borderRadius: BorderRadius.circular(15),
-                            ),
-                            height: 50,
-                            child: const Padding(
-                              padding: EdgeInsets.all(8),
-                              child: Text('صور شعائية ',
-                                  style: TextStyle(
-                                    color: AppColors.black,
-                                    fontSize: 15,
-                                  )),
-                            ),
+                      physics: const BouncingScrollPhysics(),
+                      itemCount: healthCenterModel.available_devices.length,
+                      itemBuilder: (context, index) {
+                        return Container(
+                          decoration: BoxDecoration(
+                              color: AppColors.primary.withOpacity(.8),
+                              borderRadius: BorderRadius.circular(15)),
+                          alignment: Alignment.center,
+                          child: Center(
+                            child:
+                                Text(healthCenterModel.available_devices[index],
+                                    overflow: TextOverflow.ellipsis,
+                                    style: const TextStyle(
+                                      color: AppColors.white,
+                                    )),
                           ),
-                        ),
-                      ),
-                    ],
+                        );
+                      },
+                    ),
                   ),
                 ],
               )
-
             ],
           ),
         ),

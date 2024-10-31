@@ -14,17 +14,16 @@ import 'package:med_dos/features/myConsultations/data/model/Consultation.dart';
 import 'package:path/path.dart' as path;
 
 class MessagesRepository {
-
-  Future<Either<String,List >> getMessages(id) async {
-    String token=  await sl<CacheHelper>().getData(key: "x-jwt");
+  Future<Either<String, List>> getMessages(id) async {
+    String token = await sl<CacheHelper>().getData(key: "x-jwt");
     try {
-      var  response=await sl<ApiConsumer>().get(EndPoint.getMessageConnunction+"/$id",token: token);
-      List res=response.map((e)=>Message.fromJson(e)).toList();
-
+      var response = await sl<ApiConsumer>()
+          .get(EndPoint.getMessageConnunction + "/$id", token: token);
+      List res = response.map((e) => Message.fromJson(e)).toList();
+      res = res.reversed.toList();
       return Right(res);
     } on ServerException catch (error) {
       return left(error.errorModel.errorMessage);
     }
   }
-
 }

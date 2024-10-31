@@ -2,22 +2,25 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:med_dos/core/database/api/end_points.dart';
 import 'package:med_dos/core/routes/app_routes.dart';
 import 'package:med_dos/core/utils/app_assets.dart';
 import 'package:med_dos/core/utils/app_colors.dart';
 import 'package:med_dos/core/utils/commons.dart';
 import 'package:med_dos/core/widget/custom_cached_network_image.dart';
+import 'package:med_dos/features/home_menu/presintion/screen/healthCenters_detalis/data/Model/HealthCenterModel.dart';
 import 'package:med_dos/features/home_menu/presintion/screen/healthCenters_detalis/presentation/screens/health_center_details.dart';
 
 class HealthCentersItemComponent extends StatelessWidget {
-  const HealthCentersItemComponent({Key? key}) : super(key: key);
+  HealthCenterModel healthCenterModel;
+   HealthCentersItemComponent({Key? key,required this.healthCenterModel}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: (){
         //navigate(context: context, route: Routes.doctorDetails);
-Navigator.push(context, MaterialPageRoute(builder: (_)=>HealthCenterDetails()));
+Navigator.push(context, MaterialPageRoute(builder: (_)=>HealthCenterDetails(healthCenterModel: healthCenterModel,)));
       },
       child: Container(
         decoration: BoxDecoration(
@@ -32,9 +35,9 @@ Navigator.push(context, MaterialPageRoute(builder: (_)=>HealthCenterDetails()));
                 height: 65.h,
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(15),
-                  child:const CustomCachedNetworkImage(
+                  child: CustomCachedNetworkImage(
                     fit: BoxFit.cover,
-                    imageUrl: "https://th.bing.com/th/id/OIP.rzvJIIoK4rs7kpN44Q5YegHaE8?rs=1&pid=ImgDetMain",
+                    imageUrl: EndPoint.ImageUrl + healthCenterModel.photo,
                   ),
                 ),
                 //Image.asset(AppAssets.logoIm)\
@@ -43,12 +46,12 @@ Navigator.push(context, MaterialPageRoute(builder: (_)=>HealthCenterDetails()));
             SizedBox(
               width: 8.w,
             ),
-            const Column(
+             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('Name healthCenters',style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold),),
+                Text(healthCenterModel.name,style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold),),
                 SizedBox(height: 10,),
-                Text('Location',style: TextStyle(fontSize: 12),),
+                Text(healthCenterModel.location,style: TextStyle(fontSize: 12),),
               ],
             ),
             const Spacer(),

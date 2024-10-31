@@ -8,6 +8,7 @@ import 'package:med_dos/core/utils/commons.dart';
 
 import 'package:med_dos/features/auth/presentation/cubit/login/login_cubit/login_cubit.dart';
 import 'package:med_dos/features/auth/presentation/cubit/registr_cubit/register_cubit.dart';
+import 'package:med_dos/features/booking/presentation/screeen/my_booking.dart';
 import 'package:med_dos/features/home_menu/presintion/screen/docto_%20details/presentation/screen/my_booking.dart';
 import 'package:med_dos/features/profile/presentation/cubit/setting_cubit/setting_cubit.dart';
 import 'package:med_dos/features/profile/presentation/cubit/setting_cubit/setting_state.dart';
@@ -138,7 +139,8 @@ class ProfileHome extends StatelessWidget {
                   padding: const EdgeInsets.all(10),
                   child: InkWell(
                     onTap: () {
-                      navigate(context: context, route: Routes.myBooking);
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (_) => BookingScreen()));
                     },
                     child: Container(
                       decoration: BoxDecoration(
